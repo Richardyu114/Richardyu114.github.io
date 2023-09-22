@@ -409,27 +409,6 @@
   </url>
   
   <url>
-    <loc>http://densecollections.top/tags/deep-learning/</loc>
-    <lastmod>2023-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://densecollections.top/tags/object-detection/</loc>
-    <lastmod>2023-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://densecollections.top/tags/semantic-segmentation/</loc>
-    <lastmod>2023-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://densecollections.top/tags/computer-science/</loc>
     <lastmod>2023-09-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -452,6 +431,27 @@
   
   <url>
     <loc>http://densecollections.top/tags/practical-skills/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://densecollections.top/tags/deep-learning/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://densecollections.top/tags/object-detection/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://densecollections.top/tags/semantic-segmentation/</loc>
     <lastmod>2023-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
