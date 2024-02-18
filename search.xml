@@ -32,7 +32,7 @@
 <p>实际上超现实主义我此前没有任何接触，去看之前感觉应该和抽象主义差不太多，因此也报了不小的期待，但是看完之后发现不达预期。很多画个人认为是形式大于内容。还是国画好看些。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/Summaryofthisyear-5/gallery-1.jpg" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/Summaryofthisyear-5/gallery-2.jpg" alt></p>
-<p>23年年中去看了孟京辉的<a href="https://www.douban.com/location/drama/3167344/">恋爱的犀牛</a>的现场版。之前看了廖一梅的原著剧本，也看了段奕宏-郝蕾的录像版，因此看之前也没有抱很大的期待（私以为应该没有人可以超越段奕宏那版的诠释和舞台效果）。不过实际看下来还不错，虽然我感觉男女主就是照着段奕宏和郝蕾的样子去演的。这一版去除了之前开场大钟的众人舞，有些台词做了修改，角色的台词也顺应时代潮流加了一些新梗，马路的三个好基友也起到了不错的喜剧效果。戏时长大概两个小时，看起来挺长的，实际上看下来觉得邮箱仓促，尤其是马路和明明的感情纠葛细分不如以前足（当然这也可能是我现在观影习惯变坏了）。</p>
+<p>23年年中去看了孟京辉的<a href="https://www.douban.com/location/drama/3167344/">恋爱的犀牛</a>的现场版。之前看了廖一梅的原著剧本，也看了段奕宏-郝蕾的录像版，因此看之前也没有抱很大的期待（私以为应该没有人可以超越段奕宏那版的诠释和舞台效果）。不过实际看下来还不错，虽然我感觉男女主就是照着段奕宏和郝蕾的样子去演的。这一版去除了之前开场大钟的众人舞，有些台词做了修改，角色的台词也顺应时代潮流加了一些新梗，马路的三个好基友也起到了不错的喜剧效果。戏时长大概两个小时，看起来挺长的，实际上看下来觉得有些仓促，尤其是马路和明明的感情纠葛细分不如以前足（当然这也可能是我现在观影习惯变坏了）。</p>
 <p>虽然我买的是第三排的票，但是由于不是中间的座位（右边），观感还是大打折扣，剧中除了马路会时不时正对着右边，其他情况下基本所有的演员都是正对中间或者左边，因此看不清演员的情绪。这一点下次买票还是要注意。</p>
 <p>下面说说对这部戏的感受。</p>
 <p>看剧本和录像那段时间，我停留在新世纪恋爱的议题下，新世界的消费注意和快节奏，人的意识觉醒，狗血却又常见？的三角恋爱情。我观感的重心在马路和明明受到的爱情折磨上，以及思考什么是爱情（多巴胺，几粒康泰克就可以解决的感冒）。直到今年再看现场版时，我不再对主角之间爱情的纠葛感兴趣，甚至说无感，结合我自身的社会体验，我发现这部戏与我脱节了，看到马路对着明明“舔”，对着明明发出爱的嘶吼，拆着俄罗斯娃娃式的白纸礼物（W看到这段时印象很深，她说自己期待的爱情一层层拨开后发现什么都不是，什么都没有），我突然觉得马路不是我熟悉的任何人。回家后我翻了孟京辉在B站传的段奕宏版本的<a href="https://www.bilibili.com/video/BV1Ku411f7Vy/?vd_source=c5232e4564e248b018835fa2077d9950">录像</a>，看到了一个朋友的评论</p>
@@ -948,204 +948,6 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
       </tags>
   </entry>
   <entry>
-    <title>A Brief Review of Object Detection and Semantic Segmentation</title>
-    <url>/posts/BriefreviewofObjectdetection/</url>
-    <content><![CDATA[<h2 id="about">About</h2>
-<p>目标检测（object detection）和语义分割（semantic segmentation）是计算机视觉的两个重要研究内容，在人脸检测，视频监控和自动驾驶中都有很多的应用，它们对于机器理解环境也具有一定的作用。在视觉SLAM上，已经有科研工作者将这些研究成果加入到现有的SLAM系统中，以提高系统的鲁棒性，同时促进语义SLAM的发展。因此，需要对这些工作进行一些调研总结和学习理解。由于对深度学习不了解，还未系统地进行学习，所以写的内容可能幼稚了些，后续会再进行更新。</p>
-<p>值得注意的是，目标检测在经典计算机视觉中也已经提出了一些特征描述的方法，在此不涉及，只涉及基于深度学习的目标检测方法，毕竟神经网络在图片特征的学习上比较擅长。</p>
-<p>本博客将基于文末给出的参考文献来进行总结和学习，尽力把这些问题和技术梳理清楚，同时加入一些自己的思考和不成熟的想法。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/focus_of_object_detection_based_on_DL.PNG" alt="focus on method based on deep learning"></p>
-<h2 id="task-definition">Task Definition</h2>
-<ol>
-<li>image classification–multi level  图像分类，这个任务指的是给出一张图片，要识别出哪张图片属于哪个类别；</li>
-<li>object detection–what categories and location  物体检测，这个任务除了需要识别出图片属于哪个类别，还需要对相应的物体进行具体位置的定位，我们通常用矩形框来框出这个物体；</li>
-<li>semantic segmentation–pixel wise, but does not distinct everything in one category   语义分割，这个任务是指对图片中的每个 pixel 打上标签，比如这里要给它们打上 person、sheep、dog 的标签，需要进行非常精细的分类；</li>
-<li>instance segmentation–object detection+semantic segmentation   实例分割，可以理解为进行物体检测后，对每个矩形框中的物体进行语义分割，该任务除了需要找到物体的类别和位置之外，还需要分辨出不同物体的 pixel；</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/task%20definition.png" alt="task definition"></p>
-<span id="more"></span>
-<h2 id="object-detection">Object Detection</h2>
-<h3 id="progress-一步法-font-color-deepskyblue-single-stage-font-两步法two-stage">Progress (一步法<font color="DeepSkyBlue">single-stage</font>, 两步法two stage)</h3>
-<p>最近有一篇很好的综述<a href="https://arxiv.org/pdf/1809.02165v2.pdf">[5]</a>详细地梳理了最近5年来的generic object detection技术发展和比较的综述。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/developing_route_of_object_detection.jpeg" alt="object detection developing route"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/recent%20progress%20in%20object%20detection.png" alt="progress"></p>
-<p>上图绿色的字体表示的是 Two-stage Detector 的发展历程，当然还有很多其他的方法，这里列出的是一些比较有代表性的方法。</p>
-<ul>
-<li>
-<p>2014 年有一项很重要的工作是 R-CNN，它是将物体检测首次应用于深度学习中的一篇论文，它的主要思路是将物体检测转化为这么一个问题：首先找到一个 region（区域），然后对 region 做分类。之后作者又提出了 Fast R-CNN，它是一个基于 R-CNN 的算法，运算速度显著提高。</p>
-</li>
-<li>
-<p>2015 年，这一群人又提出了 Faster R-CNN，它在速度上相比 Fast R-CNN 有了更大的提高，主要是改进了怎样在 Fast R-CNN 和 R-CNN 中找 region 的过程，Faster R-CNN 也是用深度学习的方法得到一些 region（称之为 proposal），然后再用这些 proposal 来做分类。虽然距离 Faster R-CNN 的提出已经三年多了，但它依旧是使用非常广泛的一种算法。</p>
-</li>
-<li>
-<p>2016 年，代季峰等人提出了 R-FCN，它在 Faster R-CNN 的基础上进行了改进，当时它在性能和速度都有非常大的提高。</p>
-</li>
-<li>
-<p>2017 年有两篇影响力非常大的论文，FPN 和 Mask R-CNN。FPN 也就是 Feature Pyramid Network，何恺明大神的论文，它相当于生成了 feature pyramid，然后再用多个 level 的 feature 来做 prediction。Mask R-CNN 这篇论文获得了 ICCV 2017 的最佳论文，也是何恺明大神的作品，其在 Faster R-CNN 基础上增加了 mask branch，可以用来做实例分割，同时因为有 multi-task learning，因此它对物体框的性能也有很大的提高。（另外，今年年初，2019.1月，何恺明将自己的Mask R-CNN和FPN合在了一起，效果也不错）。</p>
-</li>
-<li>
-<p>2018 年，沿着 Faster R-CNN 这条路线提出的方法有 Cascade R-CNN，它将 cascade 结构用在了 Faster R-CNN 中，同时也解决了一些 training distribution 的一些问题，因此它的性能是比较高的。另外还有两篇比较重要的论文——Relaiton Network 和 SNIP。</p>
-</li>
-</ul>
-<p>上图蓝色字体表示的 Single-stage Detector 的发展历程：2014 年的 MultiBox 是非常早期的工作；2016 年提出了 SSD 和 YOLO，这两篇论文是 Single-stage Detector 中的代表作；2017 年提出了 RetinaNet（当时 Single-stage Detector 中性能最高的方法）和 YOLO v2；2018 年有一个新的思路，提出了 CornerNet，把物体检测看成一堆点的检测，然后将这些点 group 起来。</p>
-<h3 id="general-pipeline-of-object-detection">General Pipeline of Object Detection</h3>
-<p>参考文献<a href="https://www.cnblogs.com/skyfsm/p/6806246.html">[2]</a>很好地解释了深度学习进行object detection的思路是什么。</p>
-<p>如前所述，基于深度学习的Object Detection的方法主要有两条发展脉络，一个是<strong>single-stage detector</strong>，另一个是<strong>two-stage detector</strong>.</p>
-<p><strong>Two-stage detector</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/two-stage%20detector.png" alt="single-stage detector"></p>
-<ul>
-<li>
-<p>第一部分是 Feature generation：首先图片经过 backbone（分类网络）后，会生成 feature； 之后 feature 或者直接进行 prediction，或者再过一个 neck 进行修改或增强；</p>
-</li>
-<li>
-<p>第二部分是 Region proposal：<strong>这个部分是 Two-stage Detector 的第一个 stage</strong>，其中会有一堆 sliding window anchor（预先定义好大小的框），之后对这些框做 dense 的分类和回归；接着再筛除大部分 negative anchor，留出可能是物体的框，这些框称之为 proposal；</p>
-</li>
-<li>
-<p>第三个部分是 Region recognition：有了 proposal 后，在 feature map 上利用 Rol feature extractor 来提取出每一个 proposal 对应的 feature（Rol feature），最后会经过 task head；</p>
-</li>
-</ul>
-<p><strong>Single-stage detector</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/single-stage%20detector.png" alt="single-stage detector"></p>
-<ul>
-<li>图片首先经过 feature generation 模块，这里也有 sliding window anchor，但是它们不是用来生成 proposal 的，而是直接用于做最终的 prediction，通过 dense 的分类和回归，能直接生成最终的检测结果。</li>
-</ul>
-<p><strong>一步法和两步法的区别到底在哪里？</strong></p>
-<p>实际上，现在的二步法object detection的框架都是基于Faster R-CNN的，一步法中的比较全面的算法是SSD，这两个在后面我都会进行详细地阐述。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/one_two_stage_comparison.PNG" alt="comparison of one stage and two stage"></p>
-<p>对于两步法的基础Faster R-CNN，两个阶段分别在RPN和R-CNN中完成，第一阶段是预设一系列不同大小和比例的anchors，然后将整张图传入CNN提取特征，最后利用PRN对anchors进行分类和回归，得到候选区域（proposals）；第二阶段是利用RolPooling扣取每个候选区域的特征，接着把扣取特征的特征送入后续R-CNN网络，最后对候选区域进一步分类和回归，得到最终的检测结果。</p>
-<p>由上图也可以看出，两步法是相对于一步法多了二阶段的分类，回归和特征，因而精度会更好，但是会使得算法运行的时间加长。也就是说，<strong>一步法也就是类似于只有RPN阶段，而二步法多了R-CNN</strong>，使得分类更加精细，同时再对候选区域进行回归。</p>
-<p><strong>那么一步法是否可以仿照这样的思路或者利用其他的方法达到二步法的精度，却又不损失运行效率？</strong></p>
-<p>在参考文献<a href="https://mp.weixin.qq.com/s/84JG1ZGFKb6Xp3WQFjtxZw">[3]</a>里面，张士峰博士分享了他们的工作<a href="https://github.com/sfzhang15/RefineDet">Single-Shot Refinement Neural Network for Object Detection</a>，在SSD中加入一些类似R-CNN作用的模块，来提高检测的精度，同时也保持了原有的运行效率。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/architecture_of_refinedet.PNG" alt="RefineDet"></p>
-<p>整个结构包含ARM模块，TCB连接和ODM模块，其中ARM模块和ODM模块分别对应二步法中的RPN和R-CNN的功能，TCB的主要作用是转换ARM特征，融合高层特征，因为两步法中的特征不相同，第二阶段会提取新的特征，因此需要转换和融合。<strong>该方法与二步法的区别在于没有RoIPooling</strong>，因此运行时间不会边长。该方法的精度大概较SSD提升了两个点，速度上会更快些，因为输入图像的分辨率可以是320x320的。具体的检测框架和测试结果可以看<a href="https://arxiv.org/pdf/1711.06897v3.pdf">原论文</a>。</p>
-<hr>
-<p>借此提下object detection近年来的发展趋势应当不再是该网络调参来刷速度和正确率，而是回归到框架本身的反思和设计上，毕竟现有的算法都是从Faster R-CNN来的，因此是否可以反思该框架的问题，然后对其进行改善，或者直接提出新的检测思路，比如说在前处理阶段的anchors和后处理阶段的NMS都是手动设置的，这个是否可以进行自动调节，也是一个值得研究的点。</p>
-<p>另外，在视觉SLAM和很多其他的应用场景上，输入的都是视频流的形式，而不是单个的图像，这一方面对算法的实时性，硬件的运算速度提出了要求，另一方面也对视频物体检测提出了要求，如何利用帧与帧之间的信息来加速物体检测，也是有待研究的。</p>
-<p>最后一点就是，视觉SLAM的最终梦想是能在现实大环境下进行运行，然后给出环境地图，以此与人进行交互。现实场景很复杂，充满动态的，不确定性的因素，因此这样的功能要想实现还有很长的路要走。不过可以预见的是，视觉SLAM需要结合这些新的，基于学习方法的计算机视觉的研究成果，以帮助机器人来理解环境，提高系统的鲁棒性，同时各个模块和任务之间也将是相互联系相互促进的，多任务联合（multi-task），以此提升系统的容错性 和运行时间。</p>
-<hr>
-<h3 id="faster-r-cnn">Faster R-CNN</h3>
-<p>Faster R-CNN 是 Two-stage Detector 工作的基础，它主要提出了两个东西:</p>
-<ul>
-<li>
-<p><strong>RPN</strong>：即 Region Proposal Network，目前是生成 proposal 的一个标准方式;</p>
-</li>
-<li>
-<p><strong>Traning pipeline</strong>：主要讲的是 Two-stage Detector 应该怎样 train，论文里给出的是一种交替(alternating training)的方法;</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/RPN.png" alt="RPN"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/alternating%20training.png" alt="alternating training"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/joint%20training.png" alt="joint training"></p>
-<p>因为深度学习的发展，大家都不想一步一步来回调参，因此会有了<strong>joint training</strong>这个东西。</p>
-<h3 id="fpn">FPN</h3>
-<ul>
-<li>
-<p>FPN（Feature Pyramid Network）主要也是提出了两项重要的思路：<strong>Top-down pathway 和 Multi-level prediction。</strong></p>
-</li>
-<li>
-<p>下图中的 4 张图代表了基于单个或多个 feature map 来做预测的 4 种不同的套路：</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/four%20ways%20of%20FPN.png" alt="four ways of FPN"></p>
-<ul>
-<li>具体实现如下图所示：</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/pipeline%20of%20FPN.png" alt="pipeline of FPN"></p>
-<h3 id="mask-r-cnn">MASK R-CNN</h3>
-<p>Mask R-CNN 主要也有两点贡献：<strong>RoIAlign</strong>和<strong>Mask branch</strong></p>
-<ul>
-<li>
-<p>RoIAlign：在 Mask R-CNN 之前，大家用得比较多的是 Rol Pooling，实现过程是：给出一个框，在 feature map 上 pool 出一个固定大小的 feature，比如要 pool 一个 2×2 的 feature，首先把这个框画出 2×2 的格子，每个格子映射到 feature map，看它覆盖了多少个点，之后对这些点做 max pooling，这样就能得出一个 2×2 的 feature。它的劣势是如果框稍微偏一点，得出的 feature 却可能是一样的，存在截断误差。RolAlign 就是为了解决这一问题提出的。Rol Align 并不是直接对框内的点做 max pooling，而是用双线性插值的方式得到 feature。其中还有一步是：在 2×2 的每个框中会选择多个点作为它的代表，这里选择了 4 个点，每个点分别做双线性插值，之后再让这 4 个点做 max/average pooling</p>
-</li>
-<li>
-<p>Mask branch：它是一个非常精细的操作，也有额外的监督信息，对整个框架的性能都有所提高。它的操作过程如下图所示:</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/mask%20branch.png" alt="mask branch"></p>
-<h3 id="cascade-r-cnn">Cascade R-CNN</h3>
-<ul>
-<li>
-<p>Cascade R-CNN 是目前 Faster R-CNN 这条线中较新的方法。这个方法也提出了两点贡献：一是提出了使用 <strong>cascade architecture</strong>；二是提出了怎样来适应 <strong>training distribution</strong>。</p>
-</li>
-<li>
-<p>Cascade architecture ：这个框架不是特别新的东西，之前也有类似的结构。下图左边是 Faster R-CNN，右边是 Cascade R-CNN。其中 I 代表图像或者图像生成的 feature map，H0 是 RPN，B 是 bounding box regression，C 是 classification。经过 RPN 得到的 proposal 再做 pooling 后，会有分类和回归这两个 prediction。</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/cascade%20architecture.png" alt="cascade architecture"></p>
-<ul>
-<li>Cascade R-CNN 的结构是，在经过第一次分类和回归之后，会用得到 bounding box 再来做一次 pooling，然后对这些框做下一阶段的分类和回归，这个过程可以重复多次。但如果仅仅使用 Cascade R-CNN 而不做其他改变，Cascade R-CNN 带来的提高是非常有限的。 Cascade R-CNN 提出了一个很好的 motivation，这是它比较有意义的一个地方。它研究了一下采用不同的 IoU 阈值来进行 training 的情况下，Detector 和 Regressor 的性能分布。</li>
-</ul>
-<h3 id="retinanet">RetinaNet</h3>
-<ul>
-<li>
-<p>RetinaNet 是 Singe-stage Detector 目前比较重要的一项工作，它可以看做是由 FPN+Focal Loss 组成的，其中 FPN 只是该论文中用到的架构，而 Focal Loss 则是本论文主要提出的工作。</p>
-</li>
-<li>
-<p>RetinaNet 结构如下：</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/RetinaNet.png" alt="RetinaNet"></p>
-<ul>
-<li>
-<p>RetinaNet 的结构 和 SSD 非常类似，只不过它用的是 ResNet，并在 ResNet 上加入了 FPN 的结构，每一层都有两个分支：一个用来做分类；另一个用来做框回归。此外它的每个 head 都比 SSD 和 Faster R-CNN 都要大一点，这样的话，它的参数量比较大，计算速度也比较慢。</p>
-</li>
-<li>
-<p>而 Focal Loss 试图解决的问题是 class imbalance。针对 class imbalance 的问题，Two-stage Detector 一般是通过 proposal、mini-batch sampaling 两种方式来解决的；SSD 是通过 hard negative mining 来解决的；而 RetinaNet 则通过 Focal Loss 来解决该问题。</p>
-</li>
-<li>
-<p>Focal loss 的核心思路是：对于 high confidence 的样本，给一个小的 loss——这是因为正负样本不平衡，或者说是由于 class imbalance 导致了这样的问题：比如说正负样本的比例是 1:1000，虽然负样本的 loss 都很小，但数目非常多，这些负样本的 loss 加起来的话，还是比正样本要多——这样的话，负样本就会主导整个框架。</p>
-</li>
-</ul>
-<h3 id="relation-network">Relation Network</h3>
-<ul>
-<li>在 Relation Network 之前的大部分 detectcor，在做 prediction 或 training 的时候通常只考虑到当前这一个框，而 Relation Network 提出还要考虑这个框周围的框，并基于此提出了一个 relation module，可以插在网络的任何位置，相当于是 feature refinement。Relation module 如下图所示：</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/relation%20network.png" alt="Relation Network"></p>
-<ul>
-<li>它的核心思想是：当前框的 feature 除了由当前框决定之外，还要考虑当前框和周围框及其它框的关系</li>
-</ul>
-<h3 id="snip">SNIP</h3>
-<ul>
-<li>
-<p>SNIP（Scale Normalization for Image Pyramids）另一篇比较有启发性的工作。它提出的问题是：在 train 分类器的时候，究竟是要 scale specific 还是 scale invariant。传统的 detector 通常会选择 scale invariant，但 SNIP 研究了一下之前的方法后，发现之前的训练方式得到的 feature 对 scale 并没不是很 robust，因而提出要尽量减少 scale 的 variance，让训练时的 scale 尽可能地相似。</p>
-</li>
-<li>
-<p>SNIP 结构图如下:</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/SNIP.png" alt="SNIP"></p>
-<h3 id="cornernet">CornerNet</h3>
-<ul>
-<li>
-<p>CornerNet，是 Singe-stage Detector 中比较新的方法，其与其他方法最不一样的地方是：之前的方法会在图像上选出框，再对框做分类的问题；CornerNet 则是在图中找到 pair 的关键点，这个点就代表物体。它的 pipeline 包括两步：第一步是检测到这样的 corner，即 keypoint；第二步是 group corner，就是说怎样将同一个物体的左上顶点和右下顶点框到一起。</p>
-</li>
-<li>
-<p>其算法结构如下：</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/cornerNet.png" alt="CornerNet"></p>
-<h3 id="mmdetection"><a href="https://github.com/open-mmlab/mmdetection">mmdetection</a></h3>
-<p>港中文多媒体实验室的开源物体检测框架。</p>
-<h2 id="references">References</h2>
-<p>[1]. <a href="http://www.mooc.ai/open/course/604">物体检测算法的近期发展及开源框架介绍-陈恺</a><br>
-[2]. <a href="https://www.cnblogs.com/skyfsm/p/6806246.html">基于深度学习的目标检测技术演进：R-CNN、Fast R-CNN、Faster R-CNN</a><br>
-[3]. <a href="https://mp.weixin.qq.com/s/84JG1ZGFKb6Xp3WQFjtxZw">基于深度学习的物体检测算法对比探索 - 张士峰</a><br>
-[4]. <a href="https://blog.csdn.net/Gentleman_Qin/article/details/84421435">基于深度学习的目标检测算法近5年发展历史（综述）</a><br>
-[5]. <a href="https://arxiv.org/pdf/1809.02165v2.pdf">Deep Learning for Generic Object Detection: A Survey</a><br>
-[6]. <a href="https://zhuanlan.zhihu.com/p/48169867">目标检测算法中检测框合并策略技术综述</a><br>
-[7]. <a href="https://mp.weixin.qq.com/s/mu_4kNGZuExxUK2JFTdDFw">综述 | CVPR2019目标检测方法进展</a></p>
-]]></content>
-      <categories>
-        <category>科研记录</category>
-      </categories>
-      <tags>
-        <tag>computer vision</tag>
-        <tag>deep learning</tag>
-        <tag>object detection</tag>
-        <tag>semantic segmentation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Beyond Supervised Learning-A Computer Vision Perspective</title>
     <url>/posts/beyondsupervisedlearning/</url>
     <content><![CDATA[<h2 id="about">About</h2>
@@ -1342,6 +1144,204 @@ Want to learn more or see how these features are represented? See this great art
         <tag>supervised learning</tag>
         <tag>domain adaptation</tag>
         <tag>deep neural network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A Brief Review of Object Detection and Semantic Segmentation</title>
+    <url>/posts/BriefreviewofObjectdetection/</url>
+    <content><![CDATA[<h2 id="about">About</h2>
+<p>目标检测（object detection）和语义分割（semantic segmentation）是计算机视觉的两个重要研究内容，在人脸检测，视频监控和自动驾驶中都有很多的应用，它们对于机器理解环境也具有一定的作用。在视觉SLAM上，已经有科研工作者将这些研究成果加入到现有的SLAM系统中，以提高系统的鲁棒性，同时促进语义SLAM的发展。因此，需要对这些工作进行一些调研总结和学习理解。由于对深度学习不了解，还未系统地进行学习，所以写的内容可能幼稚了些，后续会再进行更新。</p>
+<p>值得注意的是，目标检测在经典计算机视觉中也已经提出了一些特征描述的方法，在此不涉及，只涉及基于深度学习的目标检测方法，毕竟神经网络在图片特征的学习上比较擅长。</p>
+<p>本博客将基于文末给出的参考文献来进行总结和学习，尽力把这些问题和技术梳理清楚，同时加入一些自己的思考和不成熟的想法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/focus_of_object_detection_based_on_DL.PNG" alt="focus on method based on deep learning"></p>
+<h2 id="task-definition">Task Definition</h2>
+<ol>
+<li>image classification–multi level  图像分类，这个任务指的是给出一张图片，要识别出哪张图片属于哪个类别；</li>
+<li>object detection–what categories and location  物体检测，这个任务除了需要识别出图片属于哪个类别，还需要对相应的物体进行具体位置的定位，我们通常用矩形框来框出这个物体；</li>
+<li>semantic segmentation–pixel wise, but does not distinct everything in one category   语义分割，这个任务是指对图片中的每个 pixel 打上标签，比如这里要给它们打上 person、sheep、dog 的标签，需要进行非常精细的分类；</li>
+<li>instance segmentation–object detection+semantic segmentation   实例分割，可以理解为进行物体检测后，对每个矩形框中的物体进行语义分割，该任务除了需要找到物体的类别和位置之外，还需要分辨出不同物体的 pixel；</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/task%20definition.png" alt="task definition"></p>
+<span id="more"></span>
+<h2 id="object-detection">Object Detection</h2>
+<h3 id="progress-一步法-font-color-deepskyblue-single-stage-font-两步法two-stage">Progress (一步法<font color="DeepSkyBlue">single-stage</font>, 两步法two stage)</h3>
+<p>最近有一篇很好的综述<a href="https://arxiv.org/pdf/1809.02165v2.pdf">[5]</a>详细地梳理了最近5年来的generic object detection技术发展和比较的综述。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/developing_route_of_object_detection.jpeg" alt="object detection developing route"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/recent%20progress%20in%20object%20detection.png" alt="progress"></p>
+<p>上图绿色的字体表示的是 Two-stage Detector 的发展历程，当然还有很多其他的方法，这里列出的是一些比较有代表性的方法。</p>
+<ul>
+<li>
+<p>2014 年有一项很重要的工作是 R-CNN，它是将物体检测首次应用于深度学习中的一篇论文，它的主要思路是将物体检测转化为这么一个问题：首先找到一个 region（区域），然后对 region 做分类。之后作者又提出了 Fast R-CNN，它是一个基于 R-CNN 的算法，运算速度显著提高。</p>
+</li>
+<li>
+<p>2015 年，这一群人又提出了 Faster R-CNN，它在速度上相比 Fast R-CNN 有了更大的提高，主要是改进了怎样在 Fast R-CNN 和 R-CNN 中找 region 的过程，Faster R-CNN 也是用深度学习的方法得到一些 region（称之为 proposal），然后再用这些 proposal 来做分类。虽然距离 Faster R-CNN 的提出已经三年多了，但它依旧是使用非常广泛的一种算法。</p>
+</li>
+<li>
+<p>2016 年，代季峰等人提出了 R-FCN，它在 Faster R-CNN 的基础上进行了改进，当时它在性能和速度都有非常大的提高。</p>
+</li>
+<li>
+<p>2017 年有两篇影响力非常大的论文，FPN 和 Mask R-CNN。FPN 也就是 Feature Pyramid Network，何恺明大神的论文，它相当于生成了 feature pyramid，然后再用多个 level 的 feature 来做 prediction。Mask R-CNN 这篇论文获得了 ICCV 2017 的最佳论文，也是何恺明大神的作品，其在 Faster R-CNN 基础上增加了 mask branch，可以用来做实例分割，同时因为有 multi-task learning，因此它对物体框的性能也有很大的提高。（另外，今年年初，2019.1月，何恺明将自己的Mask R-CNN和FPN合在了一起，效果也不错）。</p>
+</li>
+<li>
+<p>2018 年，沿着 Faster R-CNN 这条路线提出的方法有 Cascade R-CNN，它将 cascade 结构用在了 Faster R-CNN 中，同时也解决了一些 training distribution 的一些问题，因此它的性能是比较高的。另外还有两篇比较重要的论文——Relaiton Network 和 SNIP。</p>
+</li>
+</ul>
+<p>上图蓝色字体表示的 Single-stage Detector 的发展历程：2014 年的 MultiBox 是非常早期的工作；2016 年提出了 SSD 和 YOLO，这两篇论文是 Single-stage Detector 中的代表作；2017 年提出了 RetinaNet（当时 Single-stage Detector 中性能最高的方法）和 YOLO v2；2018 年有一个新的思路，提出了 CornerNet，把物体检测看成一堆点的检测，然后将这些点 group 起来。</p>
+<h3 id="general-pipeline-of-object-detection">General Pipeline of Object Detection</h3>
+<p>参考文献<a href="https://www.cnblogs.com/skyfsm/p/6806246.html">[2]</a>很好地解释了深度学习进行object detection的思路是什么。</p>
+<p>如前所述，基于深度学习的Object Detection的方法主要有两条发展脉络，一个是<strong>single-stage detector</strong>，另一个是<strong>two-stage detector</strong>.</p>
+<p><strong>Two-stage detector</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/two-stage%20detector.png" alt="single-stage detector"></p>
+<ul>
+<li>
+<p>第一部分是 Feature generation：首先图片经过 backbone（分类网络）后，会生成 feature； 之后 feature 或者直接进行 prediction，或者再过一个 neck 进行修改或增强；</p>
+</li>
+<li>
+<p>第二部分是 Region proposal：<strong>这个部分是 Two-stage Detector 的第一个 stage</strong>，其中会有一堆 sliding window anchor（预先定义好大小的框），之后对这些框做 dense 的分类和回归；接着再筛除大部分 negative anchor，留出可能是物体的框，这些框称之为 proposal；</p>
+</li>
+<li>
+<p>第三个部分是 Region recognition：有了 proposal 后，在 feature map 上利用 Rol feature extractor 来提取出每一个 proposal 对应的 feature（Rol feature），最后会经过 task head；</p>
+</li>
+</ul>
+<p><strong>Single-stage detector</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/single-stage%20detector.png" alt="single-stage detector"></p>
+<ul>
+<li>图片首先经过 feature generation 模块，这里也有 sliding window anchor，但是它们不是用来生成 proposal 的，而是直接用于做最终的 prediction，通过 dense 的分类和回归，能直接生成最终的检测结果。</li>
+</ul>
+<p><strong>一步法和两步法的区别到底在哪里？</strong></p>
+<p>实际上，现在的二步法object detection的框架都是基于Faster R-CNN的，一步法中的比较全面的算法是SSD，这两个在后面我都会进行详细地阐述。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/one_two_stage_comparison.PNG" alt="comparison of one stage and two stage"></p>
+<p>对于两步法的基础Faster R-CNN，两个阶段分别在RPN和R-CNN中完成，第一阶段是预设一系列不同大小和比例的anchors，然后将整张图传入CNN提取特征，最后利用PRN对anchors进行分类和回归，得到候选区域（proposals）；第二阶段是利用RolPooling扣取每个候选区域的特征，接着把扣取特征的特征送入后续R-CNN网络，最后对候选区域进一步分类和回归，得到最终的检测结果。</p>
+<p>由上图也可以看出，两步法是相对于一步法多了二阶段的分类，回归和特征，因而精度会更好，但是会使得算法运行的时间加长。也就是说，<strong>一步法也就是类似于只有RPN阶段，而二步法多了R-CNN</strong>，使得分类更加精细，同时再对候选区域进行回归。</p>
+<p><strong>那么一步法是否可以仿照这样的思路或者利用其他的方法达到二步法的精度，却又不损失运行效率？</strong></p>
+<p>在参考文献<a href="https://mp.weixin.qq.com/s/84JG1ZGFKb6Xp3WQFjtxZw">[3]</a>里面，张士峰博士分享了他们的工作<a href="https://github.com/sfzhang15/RefineDet">Single-Shot Refinement Neural Network for Object Detection</a>，在SSD中加入一些类似R-CNN作用的模块，来提高检测的精度，同时也保持了原有的运行效率。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/architecture_of_refinedet.PNG" alt="RefineDet"></p>
+<p>整个结构包含ARM模块，TCB连接和ODM模块，其中ARM模块和ODM模块分别对应二步法中的RPN和R-CNN的功能，TCB的主要作用是转换ARM特征，融合高层特征，因为两步法中的特征不相同，第二阶段会提取新的特征，因此需要转换和融合。<strong>该方法与二步法的区别在于没有RoIPooling</strong>，因此运行时间不会边长。该方法的精度大概较SSD提升了两个点，速度上会更快些，因为输入图像的分辨率可以是320x320的。具体的检测框架和测试结果可以看<a href="https://arxiv.org/pdf/1711.06897v3.pdf">原论文</a>。</p>
+<hr>
+<p>借此提下object detection近年来的发展趋势应当不再是该网络调参来刷速度和正确率，而是回归到框架本身的反思和设计上，毕竟现有的算法都是从Faster R-CNN来的，因此是否可以反思该框架的问题，然后对其进行改善，或者直接提出新的检测思路，比如说在前处理阶段的anchors和后处理阶段的NMS都是手动设置的，这个是否可以进行自动调节，也是一个值得研究的点。</p>
+<p>另外，在视觉SLAM和很多其他的应用场景上，输入的都是视频流的形式，而不是单个的图像，这一方面对算法的实时性，硬件的运算速度提出了要求，另一方面也对视频物体检测提出了要求，如何利用帧与帧之间的信息来加速物体检测，也是有待研究的。</p>
+<p>最后一点就是，视觉SLAM的最终梦想是能在现实大环境下进行运行，然后给出环境地图，以此与人进行交互。现实场景很复杂，充满动态的，不确定性的因素，因此这样的功能要想实现还有很长的路要走。不过可以预见的是，视觉SLAM需要结合这些新的，基于学习方法的计算机视觉的研究成果，以帮助机器人来理解环境，提高系统的鲁棒性，同时各个模块和任务之间也将是相互联系相互促进的，多任务联合（multi-task），以此提升系统的容错性 和运行时间。</p>
+<hr>
+<h3 id="faster-r-cnn">Faster R-CNN</h3>
+<p>Faster R-CNN 是 Two-stage Detector 工作的基础，它主要提出了两个东西:</p>
+<ul>
+<li>
+<p><strong>RPN</strong>：即 Region Proposal Network，目前是生成 proposal 的一个标准方式;</p>
+</li>
+<li>
+<p><strong>Traning pipeline</strong>：主要讲的是 Two-stage Detector 应该怎样 train，论文里给出的是一种交替(alternating training)的方法;</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/RPN.png" alt="RPN"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/alternating%20training.png" alt="alternating training"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/joint%20training.png" alt="joint training"></p>
+<p>因为深度学习的发展，大家都不想一步一步来回调参，因此会有了<strong>joint training</strong>这个东西。</p>
+<h3 id="fpn">FPN</h3>
+<ul>
+<li>
+<p>FPN（Feature Pyramid Network）主要也是提出了两项重要的思路：<strong>Top-down pathway 和 Multi-level prediction。</strong></p>
+</li>
+<li>
+<p>下图中的 4 张图代表了基于单个或多个 feature map 来做预测的 4 种不同的套路：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/four%20ways%20of%20FPN.png" alt="four ways of FPN"></p>
+<ul>
+<li>具体实现如下图所示：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/pipeline%20of%20FPN.png" alt="pipeline of FPN"></p>
+<h3 id="mask-r-cnn">MASK R-CNN</h3>
+<p>Mask R-CNN 主要也有两点贡献：<strong>RoIAlign</strong>和<strong>Mask branch</strong></p>
+<ul>
+<li>
+<p>RoIAlign：在 Mask R-CNN 之前，大家用得比较多的是 Rol Pooling，实现过程是：给出一个框，在 feature map 上 pool 出一个固定大小的 feature，比如要 pool 一个 2×2 的 feature，首先把这个框画出 2×2 的格子，每个格子映射到 feature map，看它覆盖了多少个点，之后对这些点做 max pooling，这样就能得出一个 2×2 的 feature。它的劣势是如果框稍微偏一点，得出的 feature 却可能是一样的，存在截断误差。RolAlign 就是为了解决这一问题提出的。Rol Align 并不是直接对框内的点做 max pooling，而是用双线性插值的方式得到 feature。其中还有一步是：在 2×2 的每个框中会选择多个点作为它的代表，这里选择了 4 个点，每个点分别做双线性插值，之后再让这 4 个点做 max/average pooling</p>
+</li>
+<li>
+<p>Mask branch：它是一个非常精细的操作，也有额外的监督信息，对整个框架的性能都有所提高。它的操作过程如下图所示:</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/mask%20branch.png" alt="mask branch"></p>
+<h3 id="cascade-r-cnn">Cascade R-CNN</h3>
+<ul>
+<li>
+<p>Cascade R-CNN 是目前 Faster R-CNN 这条线中较新的方法。这个方法也提出了两点贡献：一是提出了使用 <strong>cascade architecture</strong>；二是提出了怎样来适应 <strong>training distribution</strong>。</p>
+</li>
+<li>
+<p>Cascade architecture ：这个框架不是特别新的东西，之前也有类似的结构。下图左边是 Faster R-CNN，右边是 Cascade R-CNN。其中 I 代表图像或者图像生成的 feature map，H0 是 RPN，B 是 bounding box regression，C 是 classification。经过 RPN 得到的 proposal 再做 pooling 后，会有分类和回归这两个 prediction。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/cascade%20architecture.png" alt="cascade architecture"></p>
+<ul>
+<li>Cascade R-CNN 的结构是，在经过第一次分类和回归之后，会用得到 bounding box 再来做一次 pooling，然后对这些框做下一阶段的分类和回归，这个过程可以重复多次。但如果仅仅使用 Cascade R-CNN 而不做其他改变，Cascade R-CNN 带来的提高是非常有限的。 Cascade R-CNN 提出了一个很好的 motivation，这是它比较有意义的一个地方。它研究了一下采用不同的 IoU 阈值来进行 training 的情况下，Detector 和 Regressor 的性能分布。</li>
+</ul>
+<h3 id="retinanet">RetinaNet</h3>
+<ul>
+<li>
+<p>RetinaNet 是 Singe-stage Detector 目前比较重要的一项工作，它可以看做是由 FPN+Focal Loss 组成的，其中 FPN 只是该论文中用到的架构，而 Focal Loss 则是本论文主要提出的工作。</p>
+</li>
+<li>
+<p>RetinaNet 结构如下：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/RetinaNet.png" alt="RetinaNet"></p>
+<ul>
+<li>
+<p>RetinaNet 的结构 和 SSD 非常类似，只不过它用的是 ResNet，并在 ResNet 上加入了 FPN 的结构，每一层都有两个分支：一个用来做分类；另一个用来做框回归。此外它的每个 head 都比 SSD 和 Faster R-CNN 都要大一点，这样的话，它的参数量比较大，计算速度也比较慢。</p>
+</li>
+<li>
+<p>而 Focal Loss 试图解决的问题是 class imbalance。针对 class imbalance 的问题，Two-stage Detector 一般是通过 proposal、mini-batch sampaling 两种方式来解决的；SSD 是通过 hard negative mining 来解决的；而 RetinaNet 则通过 Focal Loss 来解决该问题。</p>
+</li>
+<li>
+<p>Focal loss 的核心思路是：对于 high confidence 的样本，给一个小的 loss——这是因为正负样本不平衡，或者说是由于 class imbalance 导致了这样的问题：比如说正负样本的比例是 1:1000，虽然负样本的 loss 都很小，但数目非常多，这些负样本的 loss 加起来的话，还是比正样本要多——这样的话，负样本就会主导整个框架。</p>
+</li>
+</ul>
+<h3 id="relation-network">Relation Network</h3>
+<ul>
+<li>在 Relation Network 之前的大部分 detectcor，在做 prediction 或 training 的时候通常只考虑到当前这一个框，而 Relation Network 提出还要考虑这个框周围的框，并基于此提出了一个 relation module，可以插在网络的任何位置，相当于是 feature refinement。Relation module 如下图所示：</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/relation%20network.png" alt="Relation Network"></p>
+<ul>
+<li>它的核心思想是：当前框的 feature 除了由当前框决定之外，还要考虑当前框和周围框及其它框的关系</li>
+</ul>
+<h3 id="snip">SNIP</h3>
+<ul>
+<li>
+<p>SNIP（Scale Normalization for Image Pyramids）另一篇比较有启发性的工作。它提出的问题是：在 train 分类器的时候，究竟是要 scale specific 还是 scale invariant。传统的 detector 通常会选择 scale invariant，但 SNIP 研究了一下之前的方法后，发现之前的训练方式得到的 feature 对 scale 并没不是很 robust，因而提出要尽量减少 scale 的 variance，让训练时的 scale 尽可能地相似。</p>
+</li>
+<li>
+<p>SNIP 结构图如下:</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/SNIP.png" alt="SNIP"></p>
+<h3 id="cornernet">CornerNet</h3>
+<ul>
+<li>
+<p>CornerNet，是 Singe-stage Detector 中比较新的方法，其与其他方法最不一样的地方是：之前的方法会在图像上选出框，再对框做分类的问题；CornerNet 则是在图中找到 pair 的关键点，这个点就代表物体。它的 pipeline 包括两步：第一步是检测到这样的 corner，即 keypoint；第二步是 group corner，就是说怎样将同一个物体的左上顶点和右下顶点框到一起。</p>
+</li>
+<li>
+<p>其算法结构如下：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/BriefreviewofObjectdetection/cornerNet.png" alt="CornerNet"></p>
+<h3 id="mmdetection"><a href="https://github.com/open-mmlab/mmdetection">mmdetection</a></h3>
+<p>港中文多媒体实验室的开源物体检测框架。</p>
+<h2 id="references">References</h2>
+<p>[1]. <a href="http://www.mooc.ai/open/course/604">物体检测算法的近期发展及开源框架介绍-陈恺</a><br>
+[2]. <a href="https://www.cnblogs.com/skyfsm/p/6806246.html">基于深度学习的目标检测技术演进：R-CNN、Fast R-CNN、Faster R-CNN</a><br>
+[3]. <a href="https://mp.weixin.qq.com/s/84JG1ZGFKb6Xp3WQFjtxZw">基于深度学习的物体检测算法对比探索 - 张士峰</a><br>
+[4]. <a href="https://blog.csdn.net/Gentleman_Qin/article/details/84421435">基于深度学习的目标检测算法近5年发展历史（综述）</a><br>
+[5]. <a href="https://arxiv.org/pdf/1809.02165v2.pdf">Deep Learning for Generic Object Detection: A Survey</a><br>
+[6]. <a href="https://zhuanlan.zhihu.com/p/48169867">目标检测算法中检测框合并策略技术综述</a><br>
+[7]. <a href="https://mp.weixin.qq.com/s/mu_4kNGZuExxUK2JFTdDFw">综述 | CVPR2019目标检测方法进展</a></p>
+]]></content>
+      <categories>
+        <category>科研记录</category>
+      </categories>
+      <tags>
+        <tag>computer vision</tag>
+        <tag>deep learning</tag>
+        <tag>object detection</tag>
+        <tag>semantic segmentation</tag>
       </tags>
   </entry>
   <entry>
@@ -1724,6 +1724,318 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
         <tag>computer vision</tag>
         <tag>deep learning</tag>
         <tag>object detection</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>visual SLAM by Gaoxiang(1)</title>
+    <url>/posts/visualSLAMbyGaoxiang-1/</url>
+    <content><![CDATA[<h2 id="视觉slam概述">视觉SLAM概述</h2>
+<ul>
+<li>simultaneous localization and mapping</li>
+<li>仅使用相机进行室内/室外定位（有些情况下GPS会崩，IMU漂移随着时间误差增大）</li>
+<li>机器人在未知环境进行导航—建图(sparse/semi-dense/dense)</li>
+<li>SLAM问题的本质是对运动主体自身和周围环境空间不确定性的估计（spatial uncertainty）</li>
+<li>为了解决SLAM问题，我们需要状态估计理论，把定位和建图的不确定性表达出来，然后采用滤波器或非线性优化，估计状态的均值和不确定性（方差）</li>
+</ul>
+<hr>
+<p>学术上研究视觉SLAM较多，尤其是monocular，但是应用上少了点，尤其是建图的作用目前很浅，而且很多人大部分现在在用深度学习搞3D重建。目前应用的地方有：</p>
+<ul>
+<li>手持设备定位</li>
+<li>自动驾驶定位–比GPS的定位信息要丰富，甚至精度更好(可以达到厘米级)</li>
+<li>AR 增强现实（定位，建图，深度学习结合）</li>
+<li>清洁机器人</li>
+</ul>
+<hr>
+<span id="more"></span>
+<h2 id="学习研究步骤">学习研究步骤</h2>
+<p>第一部分是学习相关的数学知识，构建数学模型</p>
+<ul>
+<li>矩阵</li>
+<li>概率论</li>
+<li>李群李代数</li>
+<li>微分几何</li>
+<li>凸优化</li>
+</ul>
+<p>…</p>
+<p>第二部分是计算机视觉的代码实践</p>
+<ul>
+<li>openCV</li>
+<li>c++</li>
+<li>python</li>
+<li>Linux</li>
+</ul>
+<p>…</p>
+<p>教材：</p>
+<ul>
+<li>Multiple view  Geometry in computer vision</li>
+<li>State estimation for robotics</li>
+<li>视觉SLAM十四讲-从理论到实践(<a href="https://github.com/AceCoooool/slambook">作业代码</a>)</li>
+</ul>
+<h2 id="本教程内容提纲">本教程内容提纲</h2>
+<ul>
+<li>概述与预备知识</li>
+<li>三维空间的刚体运动</li>
+<li>李群李代数</li>
+<li>相机模型与非线性优化</li>
+<li>特征点法视觉里程计</li>
+<li>直接法视觉里程计</li>
+<li>后端优化</li>
+<li>回环检测</li>
+</ul>
+<h2 id="视觉slam的基本框架和模型">视觉SLAM的基本框架和模型</h2>
+<p>定位与建图是相互关联的，准确的定位需要精确的地图，精确的地图也来自准确的定位。</p>
+<p>为什么选择视觉传感器: 携带安装更加自由，成本更低，信息丰富，功能不单一，可开发性强，智能化程度高具有挑战性（单目monocular/双目stereo/深度相机RGB-D/鱼眼、全景、event-based相机等），而挑战是普通的相机会丢失世界的距离信息，因此需要从图像中进行恢复（相机运动，相机几何关系，物理测量等）。</p>
+<p>视觉SLAM框架</p>
+<ul>
+<li>
+<p>前端：visual odometry(估计邻帧相机相机运动/feature-based/direct-based)</p>
+</li>
+<li>
+<p>后端：optimization(消除噪声，优化轨迹/最大后验概率估计/滤波器/图优化)</p>
+</li>
+<li>
+<p>回环：loop closing(相机回到之前相同的位置，优化约束，消除累计误差/图像相似性/词袋模型)</p>
+</li>
+<li>
+<p>建图：mapping(导航/路劲规划/人机交互/可视化/通讯/度量地图（稀疏地图/稠密地图）/拓扑地图)</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/visualSLAMbyGaoxiang-1/map%20categories.png" alt="map categories"></p>
+<p>视觉SLAM的数学模型：</p>
+<p class="katex-block katex-error" title="ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
+ &amp; 运动方程 x_{k} …">\begin{align*}
+ &amp; 运动方程 x_{k} = f(x_{k-1}, u_{k},w_{k}) \\
+ &amp; 观测方程 z_{k,j} = h(y_{j}, x_{k}, v_{k,j})
+ \end{align*}
+</p>
+<p>-------0-----1------2-----3-----4-----5-----6---------&gt; t</p>
+<p>------<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_{0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>—<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>----<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>----<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">x_{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>----<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">x_{4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>-------              &gt;</p>
+<p>​         $\searrow $       $\searrow $       $\searrow $       $\searrow $</p>
+<p>​                        <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\bullet y_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.63889em;vertical-align:-0.19444em;"></span><span class="mord">∙</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>             <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bullet y_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.63889em;vertical-align:-0.19444em;"></span><span class="mord">∙</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>​                                                                      <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo><msub><mi>y</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\bullet y_{j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.730558em;vertical-align:-0.286108em;"></span><span class="mord">∙</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>​                                                                                    <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋯</mo></mrow><annotation encoding="application/x-tex">\cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.31em;vertical-align:0em;"></span><span class="minner">⋯</span></span></span></span></p>
+<p>假设一个机器人在实际场景中运动，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是此时刻k的位置，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">x_{k-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>是上一个时刻k-1的，在这之间有个输入，使得机器人运动，我们设其为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">u_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，而同时运动也包含着噪声，机器人的运动也不完全受精确控制，假设噪声为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">w_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。 现在，机器人携带了相机，相机会拍到一系列现实场景的标志，我们称其为路标点（landmark），假设此场景各个路标点为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>y</mi><mi>j</mi></msub><mo separator="true">,</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">y_{1}, y_{2}, \cdots, y_{j}, \cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span></span></span></span>。容易知道，机器人在每个时刻所在的位置都会观测到这些路标点中的一部分或者全部，假设在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_{0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>位置看到路标点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">y_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，我们记为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">z_{0,1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，看到了路标点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，记为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mn>0</mn><mo separator="true">,</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">z_{0,2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，…以此类推，这会反映在图像像素上，因此称为观测方程，同样观测也会有噪声<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">v_{k,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<p>我们通过一系列运动方程和观测方程，利用已知的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>k</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">u_{k}, z_{k,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>来推断出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_{k}, y_{j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，也就是知道了机器人的位置，同时了解了环境的信息，因此也就是两大任务：定位和建图。</p>
+<h2 id="本次作业与实践">本次作业与实践</h2>
+<p>首先大致了解下Linux下编写C++源码以及利用cmake编译可执行文件的步骤</p>
+<ul>
+<li>工具g++, cmake, VS code(optional IDE)</li>
+<li>一个利用c++编写的简单工程包含着头文件文件夹incliude，源码文件夹src，cmake编译文件夹build，以及main.cpp和CMakeLists.txt等主要文件，其中CMakeLists.txt文件的语言格式要注意</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line">project(HelloSLAM)</span><br><span class="line"></span><br><span class="line">#指定程序编译的模式</span><br><span class="line">set(CMAKE_BUILD_TYPE Debug)</span><br><span class="line"></span><br><span class="line">#claim the include files&#x27; directories</span><br><span class="line">include_directories(&quot;include&quot;)</span><br><span class="line"></span><br><span class="line"># only src files</span><br><span class="line">add_library(libHello src/hello.cpp)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add_executable(sayHello main.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(sayHello libHello)</span><br></pre></td></tr></table></figure>
+<p>利用vs code配合cmake进行<a href="https://zhuanlan.zhihu.com/p/52874931">配置</a>以进行代码的编写和调试，也可以选择KDEVELOP和其他的IDE。</p>
+<h3 id="熟悉liinux">熟悉LIinux</h3>
+<p>1.如何在 Ubuntu 中安装软件（命令⾏界⾯）？它们通常被安装在什么地⽅？</p>
+<ul>
+<li>apt-get 方式的安装；</li>
+</ul>
+<p>普通安装：<code>sudo apt-get install XXX</code></p>
+<p>修复安装：<code>sudo apt-get -f install XXX</code></p>
+<p>重新安装：<code>sudo apt-get -f reinstall XXX</code></p>
+<ul>
+<li>dpkg方式的安装</li>
+</ul>
+<p><code>sudo dpkg -i package_name.deb</code></p>
+<ul>
+<li>安装的地方</li>
+</ul>
+<p>通常被安装在<code>/usr/bin</code>，<code>/usr/local</code>这个目录下</p>
+<p>系统安装软件一般在<code>/usr/share</code>，可执行的文件在<code>/usr/bin</code>，配置文件可能安装到了<code>/etc</code>下等。文档一般在 <code>/usr/share</code>，可执行文件 <code>/usr/bin</code>，配置文件 <code>/etc</code>，lib文件 <code>/usr/lib。</code></p>
+<p>2.linux 的环境变量是什么？我如何定义新的环境变量？</p>
+<ul>
+<li><a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html">Environment variables</a> defined in this chapter affect the operation of multiple utilities, functions, and applications.</li>
+</ul>
+<p>linux是一个多用户的操作系统。每个用户登录系统后，都会有一个专用的运行环境。通常每个用户默认的环境都是相同的，这个默认环境实际上就是一组环境变量的定义。用户可以对自己的运行环境进行定制，其方法就是修改相应的系统环境变量。环境变量是一个具有特定名字的对象，它包含了一个或者多个应用程序所将使用到的信息</p>
+<p>常见的环境变量：</p>
+<p>PATH：决定了shell将到哪些目录中寻找命令或程序</p>
+<p>HOME：当前用户主目录</p>
+<p>MAIL：是指当前用户的邮件存放目录。</p>
+<p>SHELL：是指当前用户用的是哪种Shell。</p>
+<p>HISTSIZE：是指保存历史命令记录的条数</p>
+<p>LOGNAME：是指当前用户的登录名。</p>
+<p>HOSTNAME：是指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的。</p>
+<p>LANG/LANGUGE：是和语言相关的环境变量，使用多种语言的用户可以修改此环境变量。</p>
+<p>使用修改.bashrc文件进行环境变量的编辑，只对当前用户有用。</p>
+<p>使用修改/etc/profile文件进行环境变量的编辑，是对所有用户有用。</p>
+<p>关于环境变量命令介绍：</p>
+<p>echo显示某个环境变量值echo$PATH</p>
+<p><strong>export设置一个新的环境变量exportHELLO=“hello”(可以无引号)</strong></p>
+<p>env显示所有环境变量</p>
+<p>set显示本地定义的shell变量</p>
+<p>unset清除环境变量unsetHELLO</p>
+<p>readonly设置只读环境变量readonlyHELLO</p>
+<ul>
+<li>对所有用户生效的永久性变量（系统级）:</li>
+</ul>
+<p>这类变量对系统内的所有用户都生效，所有用户都可以使用这类变量。作用范围是整个系统。</p>
+<p>设置方式： 用vim在/etc/profile文件中添加我们想要的环境变量,用export指令添加环境变量</p>
+<p>当然，这个文件只有在root（超级用户）下才能修改。我们可以在etc目录下使用ls -l查看这个文件的用户及权限</p>
+<p>【注意】：添加完成后新的环境变量不会立即生效，除非你调用source /etc/profile 该文件才会生效。否则只能在下次重进此用户时才能生效。</p>
+<ul>
+<li>对单一用户生效的永久性变量（用户级）:</li>
+</ul>
+<p>只针对当前用户，和上面的一样，只不过不需要在etc下面进行添加，直接在.bash_profile文件最下面用export添加就好了。</p>
+<p>这里 .bashrc和.bash_profile原则上来说设置此类环境变量时在这两个文件任意一个里面添加都是可以的。</p>
+<p>~/.bash_profile是交互式login方式进入bash shell运行。</p>
+<p>~/ .bashrc是交互式non-login方式进入bash shell运行。</p>
+<p>二者设置大致相同。</p>
+<p>就是.bash_profile文件只会在用户登录的时候读取一次</p>
+<p>而.bashrc在每次打开终端进行一次新的会话时都会读取。</p>
+<ul>
+<li>临时有效的环境变量（只对当前shell有效）:</li>
+</ul>
+<p>此类环境变量只对当前的shell有效。当我们退出登录或者关闭终端再重新打开时，这个环境变量就会消失。是临时的。 直接使用export指令添加。</p>
+<p>3.linux 根⽬录下⾯的⽬录结构是什么样的？⾄少说出 3 个⽬录的⽤途。</p>
+<ul>
+<li>可通过终端查看/目录下的文件：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p><code>/bin </code>用户二进制文件<br>
+包含二进制可执行文件，系统所有用户可执行文件都在这个文件夹里，例如：ls，cp，ping等。</p>
+<p><code>/sbin</code> 系统二进制文件<br>
+包含二进制可执行文件，但只能由系统管理员运行，对系统进行维护。</p>
+<p><code>/etc </code>配置文件<br>
+包含所有程序配置文件，也包含了用于启动/停止单个程序的启动和关闭shell脚本。</p>
+<p><code>/dev </code>设备文件<br>
+包含终端所有设备，USB或连接到系统的任何设备。例如：<code>/dev/tty1</code>、<code>dev/usbmon0</code></p>
+<p><code>/proc</code>进程信息<br>
+包含系统进程的相关信息。<br>
+这是一个虚拟的文件系统，包含有关正在运行的进程的信息。例如：<code>/proc/&#123;pid&#125;</code>目录中包含的与特定pid相关的信息。<br>
+这是一个虚拟的文件系统，系统资源以文本信息形式存在。例如：<code>/proc/uptime</code></p>
+<p><code>/var </code>变量文件<br>
+可以找到内容可能增长的文件。<br>
+这包括 - 系统日志文件<code>/var/log</code>;包和数据库文件<code>/var/lib</code>;电子邮件<code>/var/mail</code>;打印队列<code>/var/spool</code>;锁文件<code>/var/lock</code>;多次重新启动需要的临时文件<code>/var/tmp</code>;</p>
+<p><code>/tmp </code>临时文件<br>
+包含系统和用户创建的临时文件。<br>
+当系统重新启动时，这个目录下的文件都将被删除。</p>
+<p><code>/usr </code>用户程序<br>
+包含二进制文件、库文件、文档和二级程序的源代码。<br>
+<code>/usr/bin</code>中包含用户程序的二进制文件。如果你在<code>/bin</code>中找不到用户二进制文件，到<code>/usr/bin</code>目录看看。例如：at、awk、cc、less、scp。<br>
+<code>/usr/sbin</code>中包含系统管理员的二进制文件。如果你在<code>/sbin</code>中找不到系统二进制文件，到<code>/usr/sbin</code>目录看看。例如：atd、cron、sshd、useradd、userdel。<br>
+<code>/usr/lib</code>中包含了<code>/usr/bin</code>和<code>/usr/sbin</code>用到的库。<br>
+<code>/usr/local</code>中包含了从源安装的用户程序。例如，当你从源安装Apache，它会在<code>/usr/local/apache2</code>中。</p>
+<p><code>/home</code> HOME目录<br>
+所有用户用来存档他们的个人档案。</p>
+<p><code>/boot </code>引导加载程序文件<br>
+包含引导加载程序相关的文件。<br>
+内核的initrd、vmlinux、grub文件位于<code>/boot</code>下。</p>
+<p><code>/lib </code>系统库<br>
+包含支持位于<code>/bin</code>和<code>/sbin</code>下的二进制文件的库文件.<br>
+库文件名为 <a href="http://xn--ldlib-ym6j.so">ld或lib.so</a>.*</p>
+<p><code>/opt </code>可选的附加应用程序<br>
+opt代表opitional；<br>
+包含从个别厂商的附加应用程序。<br>
+附加应用程序应该安装在<code>/opt/</code>或者<code>/opt/</code>的子目录下。</p>
+<p><code>/mnt </code>挂载目录<br>
+临时安装目录，系统管理员可以挂载文件系统。</p>
+<p><code>/media</code> 可移动媒体设备<br>
+用于挂载可移动设备的临时目录。<br>
+举例来说，挂载CD-ROM的<code>/media/cdrom</code>，挂载软盘驱动器的<code>/media/floppy</code>;</p>
+<p><code>/srv</code>服务数据<br>
+srv代表服务。<br>
+包含服务器特定服务相关的数据。<br>
+例如，<code>/srv/cvs</code>包含cvs相关的数据。</p>
+<p>4.假设我要给 <a href="http://a.sh">a.sh</a> 加上可执⾏权限，该输⼊什么命令？</p>
+<p><code>chmod 777 文件名</code> 将文件设置成对拥有者、组成员、其他人可读、可写、可执行。<br>
+<code>chmod a+x 文件名</code>将文件在原来的配置上增加可执行权限。</p>
+<p>5.假设我要将 <a href="http://a.sh">a.sh</a> ⽂件的所有者改成 xiang:xiang，该输⼊什么命令？</p>
+<p><code>chown xiang:xiang 文件名</code>将文件的所有者改成xiang:xiang</p>
+<h3 id="slam文献阅读">SLAM文献阅读</h3>
+<p>1.SLAM 会在哪些场合中⽤到？⾄少列举三个⽅向。</p>
+<p>机器人定位导航、手持设备定位、增强现实、自动泊车、语义地图重建等</p>
+<p>2.SLAM中定位与建图是什么关系？为什么在定位的同时需要建图？</p>
+<p>定位需要精确的地图，详细的地图需要精确地定位，两者相辅相成，相互依存。重定位和局部建图是slam框架中很重要的两个线程。</p>
+<p>定位：机器人必须<strong>知道自己在环境中位置</strong>；</p>
+<p>建图：机器人必须<strong>记录环境中特征的位置</strong>（如果知道自己的位置）；</p>
+<p>机器人在未知环境中从一个未知位置开始移动,在移动过程中根据位置估计和地图进行自身定位,同时在自身定位的基础上建造增量式地图，实现机器人的自主定位和导航。</p>
+<p>3.SLAM发展历史如何？我们可以将它划分成哪⼏个阶段？</p>
+<p>1985-1990：, Chatila 和Laumond (1985) and Smith et al. (1990)提出以建图和定位同时进行；</p>
+<p><strong>单传感器为外部传感器：</strong></p>
+<p>早期：</p>
+<ul>
+<li>声呐(Tardós et al. 2002; Ribas et al. 2008)；</li>
+</ul>
+<p>后期：</p>
+<ul>
+<li>
+<p>激光雷达(Nüchter etal. 2007; Thrun et al. 2006)；</p>
+</li>
+<li>
+<p>相机(Se et al. 2005; Lemaire et al. 2007; Davison 2003;Bogdan et al. 2009)；</p>
+</li>
+<li>
+<p>GPS(Thrun et al. 2005a)；</p>
+</li>
+</ul>
+<p><strong>多传感器融合</strong></p>
+<p>三个发展阶段：</p>
+<ul>
+<li>
+<p>初始阶段：二十世纪八十年代</p>
+</li>
+<li>
+<p>发展阶段：二十世纪九十年代</p>
+</li>
+<li>
+<p>快速发展阶段</p>
+</li>
+</ul>
+<p>4.列举三篇在SLAM领域的经典⽂献。</p>
+<ul>
+<li>
+<p>Smith, R.C. and P. Cheeseman, On the Representation and Estimation of Spatial Uncertainty. International Journal of Robotics Research, 1986. 5</p>
+</li>
+<li>
+<p>Se, S., D. Lowe and J. Little, Mobile robot localization and mapping with uncertainty using scale­invariant visual landmarks. The international Journal of robotics Research, 2002. 21</p>
+</li>
+<li>
+<p>Mullane, J., et al., A Random­Finite­Set Approach to Bayesian SLAM. IEEE Transactions on Robotics, 2011</p>
+</li>
+</ul>
+<h3 id="cmake练习">CMake练习</h3>
+<blockquote>
+<p>1.程序代码由头文件和源文件组成；</p>
+<p>2.带有main函数的源文件编译成可执行程序，其他的编译成库文件；</p>
+<p>3.如果可执行程序想调用库文件中的函数，它需要参考该库提供的头文件，以明白调用的格式。同时要把可执行程序链接到库文件上；</p>
+</blockquote>
+<p>在自己的工程目录里面建立子目录<code>build</code>文件夹和<code>src</code>文件夹和<code>libhello</code>文件夹，hello.cpp,hello.h放入<code>libhello</code>中,useHello.cpp放入<code>src</code>中。同时在工程目录下创建一个顶层的CMakeLists.txt文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project(sayHello)</span><br><span class="line"></span><br><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"></span><br><span class="line">#ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</span><br><span class="line">#这个指令用于向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制存放的位置</span><br><span class="line">add_subdirectory(src) </span><br><span class="line">#在 build 目录中将出现一个 src 目录，生成的目标代码 hello 将存放在 src 目录中</span><br><span class="line"></span><br><span class="line">add_subdirectory(libhello)</span><br><span class="line"></span><br><span class="line">set(CMAKE_BUILD_TYPE &quot;Release&quot;)</span><br></pre></td></tr></table></figure>
+<p>在<code>src</code>文件夹下新建CMakeLists.txt文件，输入如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"></span><br><span class="line">#头文件目录</span><br><span class="line">include_directories($&#123;PROJECT_SOURCE_DIR&#125;/libhello)</span><br><span class="line"></span><br><span class="line">set(APP_SRC useHello.cpp)</span><br><span class="line"></span><br><span class="line">#指定最终的目标二进制的位置</span><br><span class="line">#SET(EXECUTABLE_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/bin)</span><br><span class="line">#SET(LIBRARY_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/lib)</span><br><span class="line">set(EXECUTABLE_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/bin)</span><br><span class="line"></span><br><span class="line">add_executable(sayHello $&#123;APP_SRC&#125;)</span><br><span class="line"></span><br><span class="line">#为 target 添加需要链接的库</span><br><span class="line">target_link_libraries(sayHello libhello)</span><br></pre></td></tr></table></figure>
+<p>最后在<code>libhello</code>文件夹下新建CMakeLists.txt文件，输入如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"></span><br><span class="line">set(LIB_SRC hello.cpp)</span><br><span class="line"></span><br><span class="line">#向 C/C++编译器添加-D 定义</span><br><span class="line">add_definitions(&quot;-DLIBHELLO_BUILD&quot;)</span><br><span class="line"></span><br><span class="line">#添加动态库</span><br><span class="line">add_library(libhello SHARED $&#123;LIB_SRC&#125;)</span><br><span class="line">#设置动态库输出位置</span><br><span class="line">set(LIBRARY_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/lib)</span><br><span class="line"></span><br><span class="line">#SET_TARGET_PROPERTIES(target1 target2 ...</span><br><span class="line">#PROPERTIES prop1 value1 </span><br><span class="line">#prop2 value2 ...)</span><br><span class="line">#该指令可以用来设置输出的名称，对于动态库，还可以用来指定动态库版本和 API 版本</span><br><span class="line">set_target_properties(libhello PROPERTIES OUTPUT_NAME &quot;sayhello&quot;)</span><br></pre></td></tr></table></figure>
+<p>接着在<code>build</code>文件夹下<code>cmake ..</code>, <code>make</code>即可，在biuld文件中的子问夹下的bin文件生成可执行文件sayHello;在lib中生成库文件libhello.so共享库文件。</p>
+<p>对于安装路径，可以使用<code>CMAKE_INSTALL_PREFIX</code>命令。</p>
+<h3 id="理解orbslam2框架">理解ORBSLAM2框架</h3>
+<p>1.<code>git clone https://github.com/raulmur/ORB_SLAM2</code></p>
+<p>2.(a) 6个可执行文件一个库文件 <code>set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/lib)</code></p>
+<p>(b)<code>include</code>文件夹包含：对应<code>src</code>中程序的代码函数头文件；<code>src</code>文件夹包含：相应程序的代码函数的c++文件；Examples文件夹包含RGB-D文件夹，Stereo文件夹， Monocular文件夹，具体的内容在总目录下的CMakeLists.txt文件中有写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Build examples</span><br><span class="line"></span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/Examples/RGB-D)</span><br><span class="line"></span><br><span class="line">add_executable(rgbd_tum</span><br><span class="line">Examples/RGB-D/rgbd_tum.cc)</span><br><span class="line">target_link_libraries(rgbd_tum $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/Examples/Stereo)</span><br><span class="line"></span><br><span class="line">add_executable(stereo_kitti</span><br><span class="line">Examples/Stereo/stereo_kitti.cc)</span><br><span class="line">target_link_libraries(stereo_kitti $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(stereo_euroc</span><br><span class="line">Examples/Stereo/stereo_euroc.cc)</span><br><span class="line">target_link_libraries(stereo_euroc $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/Examples/Monocular)</span><br><span class="line"></span><br><span class="line">add_executable(mono_tum</span><br><span class="line">Examples/Monocular/mono_tum.cc)</span><br><span class="line">target_link_libraries(mono_tum $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(mono_kitti</span><br><span class="line">Examples/Monocular/mono_kitti.cc)</span><br><span class="line">target_link_libraries(mono_kitti $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(mono_euroc</span><br><span class="line">Examples/Monocular/mono_euroc.cc)</span><br><span class="line">target_link_libraries(mono_euroc $&#123;PROJECT_NAME&#125;)</span><br></pre></td></tr></table></figure>
+<p>© OPENCV_LIBS、EIGEN3_LIBS、Pangolin_LIBRARIES、/ORB-SLAM2/Thirdparty/DBoW2/lib/libDBoW2.so、/ORB-SLAM2/Thirdparty/g2o/lib/libg2o.so</p>
+<h3 id="运行orb-slam2">运行ORB-SLAM2</h3>
+<p>1.编译安装依赖项，可以按照<a href="https://github.com/raulmur/ORB_SLAM2">ORB-SLAM2源码</a>的指导进行配置。其他依赖项按照高翔书中所说的安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libopencv-dev libeigen3-dev libqt4-dev qt4-qmake libqglviewer-dev libsuitesparse-dev libcxsparse3.1.2 libcholmod[tab安装]</span><br></pre></td></tr></table></figure>
+<p>其中需要注意Pangolin需要下载手动编译安装，步骤比较简单，不再赘述</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libglew-dev</span><br><span class="line">---</span><br><span class="line">sudo apt-get install libboost-dev libboost-thread-dev libboost-filesystem-dev</span><br><span class="line">---</span><br><span class="line">git clone https://github.com/stevenlovegrove/Pangolin Pangolin</span><br><span class="line">--</span><br><span class="line">cd Pangolin</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make </span><br><span class="line">sudo make install</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>另外一个注意的点就是opencv库，我是手动下载编译安装的，网上的教程很多，主要是编译时注意cmake的设置，但是我在安装的时候无法被python链接，<a href="http://xn--cv2-kd9dw54dxji8oh3wbhxxgvu.so">也就是没有生成cv2.so</a>，导致没办法在Python2和python3中<code>import cv2</code>，估计可能是我之前先装了anaconda的原因，导致了opencv编译忽略了Python路径问题。。。尝试了几次，未果，等以后用到了python再解决这个问题（可以直接用<code>sudo pip3 install opencv-python</code>，如果不想麻烦的话，不过以后可能会出现一些问题）</p>
+<p>2.如何将 myslam.cpp或 myvideo.cpp 加⼊到 ORB-SLAM2 ⼯程中？请给出你的 CMakeLists.txt 修改⽅案。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#add myvideo.cpp and myslam.cpp</span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(myvideo myvideo.cpp)</span><br><span class="line">target_link_libraries(myvideo $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(myslam myslam.cpp)</span><br><span class="line">target_link_libraries(myslam $&#123;PROJECT_NAME&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>将myvideo.cpp、myslam.cpp、myvideo.yaml、myslam.yaml以及myvideo.mp4都放到ORB-SLAM2目录下</strong>，再次编译ORB-SLAM2后，就会生成可执行文件，然后终端输入./myvideo和./myslam就可以直接运行了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/visualSLAMbyGaoxiang-1/myvideo.png" alt="myvideo"></p>
+<p>这里有个问题，一开始我是根据CMakeLits.txt中上面的语句来写的，也就是我把myvideo.cpp、myslam.cpp放在了、Examples/Monocular文件夹中，然后进行编译，结果虽然生成了可执行文件，但是程序无法运行，终端要么提示无法读取对应的.yaml的设置，要么出现segmentation fault错误，最后放到ORB-SLAM2总目录下就没问题了。。。目前不知道什么原因，等后面再看看。</p>
+<hr>
+<hr>
+<p>因为ORB-SLAM2开源的版本没有稠密建图功能，因此如果想尝试稠密建图功能，可以参考高翔博士的ORB-SLAM2_modofied，利用PCL工具实时拼接RGB-D图像，效果还可以，不过没有原作者视频中最后的那个效果好，安装步骤在<a href="https://github.com/Richardyu114/ORBSLAM2_with_pointcloud_map-in-Ubuntu-16.04">这里</a>。</p>
+]]></content>
+      <categories>
+        <category>科研记录</category>
+      </categories>
+      <tags>
+        <tag>visual SLAM</tag>
+        <tag>Linux</tag>
+        <tag>C++11</tag>
+        <tag>Computer vision</tag>
+        <tag>OpenCV</tag>
       </tags>
   </entry>
   <entry>
@@ -2204,318 +2516,6 @@ w_{1}^{2}+x_{1}^{2}-y_{1}^{2}-z_{1}^{2} &amp; 2x_{1}y_{1}-2w_{1}z_{1} &amp; 2x_{
         <tag>C++11</tag>
         <tag>Computer vision</tag>
         <tag>Eigen</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>visual SLAM by Gaoxiang(1)</title>
-    <url>/posts/visualSLAMbyGaoxiang-1/</url>
-    <content><![CDATA[<h2 id="视觉slam概述">视觉SLAM概述</h2>
-<ul>
-<li>simultaneous localization and mapping</li>
-<li>仅使用相机进行室内/室外定位（有些情况下GPS会崩，IMU漂移随着时间误差增大）</li>
-<li>机器人在未知环境进行导航—建图(sparse/semi-dense/dense)</li>
-<li>SLAM问题的本质是对运动主体自身和周围环境空间不确定性的估计（spatial uncertainty）</li>
-<li>为了解决SLAM问题，我们需要状态估计理论，把定位和建图的不确定性表达出来，然后采用滤波器或非线性优化，估计状态的均值和不确定性（方差）</li>
-</ul>
-<hr>
-<p>学术上研究视觉SLAM较多，尤其是monocular，但是应用上少了点，尤其是建图的作用目前很浅，而且很多人大部分现在在用深度学习搞3D重建。目前应用的地方有：</p>
-<ul>
-<li>手持设备定位</li>
-<li>自动驾驶定位–比GPS的定位信息要丰富，甚至精度更好(可以达到厘米级)</li>
-<li>AR 增强现实（定位，建图，深度学习结合）</li>
-<li>清洁机器人</li>
-</ul>
-<hr>
-<span id="more"></span>
-<h2 id="学习研究步骤">学习研究步骤</h2>
-<p>第一部分是学习相关的数学知识，构建数学模型</p>
-<ul>
-<li>矩阵</li>
-<li>概率论</li>
-<li>李群李代数</li>
-<li>微分几何</li>
-<li>凸优化</li>
-</ul>
-<p>…</p>
-<p>第二部分是计算机视觉的代码实践</p>
-<ul>
-<li>openCV</li>
-<li>c++</li>
-<li>python</li>
-<li>Linux</li>
-</ul>
-<p>…</p>
-<p>教材：</p>
-<ul>
-<li>Multiple view  Geometry in computer vision</li>
-<li>State estimation for robotics</li>
-<li>视觉SLAM十四讲-从理论到实践(<a href="https://github.com/AceCoooool/slambook">作业代码</a>)</li>
-</ul>
-<h2 id="本教程内容提纲">本教程内容提纲</h2>
-<ul>
-<li>概述与预备知识</li>
-<li>三维空间的刚体运动</li>
-<li>李群李代数</li>
-<li>相机模型与非线性优化</li>
-<li>特征点法视觉里程计</li>
-<li>直接法视觉里程计</li>
-<li>后端优化</li>
-<li>回环检测</li>
-</ul>
-<h2 id="视觉slam的基本框架和模型">视觉SLAM的基本框架和模型</h2>
-<p>定位与建图是相互关联的，准确的定位需要精确的地图，精确的地图也来自准确的定位。</p>
-<p>为什么选择视觉传感器: 携带安装更加自由，成本更低，信息丰富，功能不单一，可开发性强，智能化程度高具有挑战性（单目monocular/双目stereo/深度相机RGB-D/鱼眼、全景、event-based相机等），而挑战是普通的相机会丢失世界的距离信息，因此需要从图像中进行恢复（相机运动，相机几何关系，物理测量等）。</p>
-<p>视觉SLAM框架</p>
-<ul>
-<li>
-<p>前端：visual odometry(估计邻帧相机相机运动/feature-based/direct-based)</p>
-</li>
-<li>
-<p>后端：optimization(消除噪声，优化轨迹/最大后验概率估计/滤波器/图优化)</p>
-</li>
-<li>
-<p>回环：loop closing(相机回到之前相同的位置，优化约束，消除累计误差/图像相似性/词袋模型)</p>
-</li>
-<li>
-<p>建图：mapping(导航/路劲规划/人机交互/可视化/通讯/度量地图（稀疏地图/稠密地图）/拓扑地图)</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/visualSLAMbyGaoxiang-1/map%20categories.png" alt="map categories"></p>
-<p>视觉SLAM的数学模型：</p>
-<p class="katex-block katex-error" title="ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
- &amp; 运动方程 x_{k} …">\begin{align*}
- &amp; 运动方程 x_{k} = f(x_{k-1}, u_{k},w_{k}) \\
- &amp; 观测方程 z_{k,j} = h(y_{j}, x_{k}, v_{k,j})
- \end{align*}
-</p>
-<p>-------0-----1------2-----3-----4-----5-----6---------&gt; t</p>
-<p>------<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_{0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>—<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>----<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>----<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">x_{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>----<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">x_{4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>-------              &gt;</p>
-<p>​         $\searrow $       $\searrow $       $\searrow $       $\searrow $</p>
-<p>​                        <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\bullet y_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.63889em;vertical-align:-0.19444em;"></span><span class="mord">∙</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>             <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bullet y_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.63889em;vertical-align:-0.19444em;"></span><span class="mord">∙</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
-<p>​                                                                      <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∙</mo><msub><mi>y</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\bullet y_{j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.730558em;vertical-align:-0.286108em;"></span><span class="mord">∙</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></p>
-<p>​                                                                                    <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋯</mo></mrow><annotation encoding="application/x-tex">\cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.31em;vertical-align:0em;"></span><span class="minner">⋯</span></span></span></span></p>
-<p>假设一个机器人在实际场景中运动，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是此时刻k的位置，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">x_{k-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>是上一个时刻k-1的，在这之间有个输入，使得机器人运动，我们设其为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">u_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，而同时运动也包含着噪声，机器人的运动也不完全受精确控制，假设噪声为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">w_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。 现在，机器人携带了相机，相机会拍到一系列现实场景的标志，我们称其为路标点（landmark），假设此场景各个路标点为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>y</mi><mi>j</mi></msub><mo separator="true">,</mo><mo>⋯</mo></mrow><annotation encoding="application/x-tex">y_{1}, y_{2}, \cdots, y_{j}, \cdots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span></span></span></span>。容易知道，机器人在每个时刻所在的位置都会观测到这些路标点中的一部分或者全部，假设在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x_{0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>位置看到路标点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">y_{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，我们记为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">z_{0,1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，看到了路标点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y_{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，记为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mn>0</mn><mo separator="true">,</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">z_{0,2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，…以此类推，这会反映在图像像素上，因此称为观测方程，同样观测也会有噪声<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">v_{k,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>。</p>
-<p>我们通过一系列运动方程和观测方程，利用已知的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>k</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mrow><mi>k</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">u_{k}, z_{k,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>来推断出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_{k}, y_{j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，也就是知道了机器人的位置，同时了解了环境的信息，因此也就是两大任务：定位和建图。</p>
-<h2 id="本次作业与实践">本次作业与实践</h2>
-<p>首先大致了解下Linux下编写C++源码以及利用cmake编译可执行文件的步骤</p>
-<ul>
-<li>工具g++, cmake, VS code(optional IDE)</li>
-<li>一个利用c++编写的简单工程包含着头文件文件夹incliude，源码文件夹src，cmake编译文件夹build，以及main.cpp和CMakeLists.txt等主要文件，其中CMakeLists.txt文件的语言格式要注意</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line">project(HelloSLAM)</span><br><span class="line"></span><br><span class="line">#指定程序编译的模式</span><br><span class="line">set(CMAKE_BUILD_TYPE Debug)</span><br><span class="line"></span><br><span class="line">#claim the include files&#x27; directories</span><br><span class="line">include_directories(&quot;include&quot;)</span><br><span class="line"></span><br><span class="line"># only src files</span><br><span class="line">add_library(libHello src/hello.cpp)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add_executable(sayHello main.cpp)</span><br><span class="line"></span><br><span class="line">target_link_libraries(sayHello libHello)</span><br></pre></td></tr></table></figure>
-<p>利用vs code配合cmake进行<a href="https://zhuanlan.zhihu.com/p/52874931">配置</a>以进行代码的编写和调试，也可以选择KDEVELOP和其他的IDE。</p>
-<h3 id="熟悉liinux">熟悉LIinux</h3>
-<p>1.如何在 Ubuntu 中安装软件（命令⾏界⾯）？它们通常被安装在什么地⽅？</p>
-<ul>
-<li>apt-get 方式的安装；</li>
-</ul>
-<p>普通安装：<code>sudo apt-get install XXX</code></p>
-<p>修复安装：<code>sudo apt-get -f install XXX</code></p>
-<p>重新安装：<code>sudo apt-get -f reinstall XXX</code></p>
-<ul>
-<li>dpkg方式的安装</li>
-</ul>
-<p><code>sudo dpkg -i package_name.deb</code></p>
-<ul>
-<li>安装的地方</li>
-</ul>
-<p>通常被安装在<code>/usr/bin</code>，<code>/usr/local</code>这个目录下</p>
-<p>系统安装软件一般在<code>/usr/share</code>，可执行的文件在<code>/usr/bin</code>，配置文件可能安装到了<code>/etc</code>下等。文档一般在 <code>/usr/share</code>，可执行文件 <code>/usr/bin</code>，配置文件 <code>/etc</code>，lib文件 <code>/usr/lib。</code></p>
-<p>2.linux 的环境变量是什么？我如何定义新的环境变量？</p>
-<ul>
-<li><a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html">Environment variables</a> defined in this chapter affect the operation of multiple utilities, functions, and applications.</li>
-</ul>
-<p>linux是一个多用户的操作系统。每个用户登录系统后，都会有一个专用的运行环境。通常每个用户默认的环境都是相同的，这个默认环境实际上就是一组环境变量的定义。用户可以对自己的运行环境进行定制，其方法就是修改相应的系统环境变量。环境变量是一个具有特定名字的对象，它包含了一个或者多个应用程序所将使用到的信息</p>
-<p>常见的环境变量：</p>
-<p>PATH：决定了shell将到哪些目录中寻找命令或程序</p>
-<p>HOME：当前用户主目录</p>
-<p>MAIL：是指当前用户的邮件存放目录。</p>
-<p>SHELL：是指当前用户用的是哪种Shell。</p>
-<p>HISTSIZE：是指保存历史命令记录的条数</p>
-<p>LOGNAME：是指当前用户的登录名。</p>
-<p>HOSTNAME：是指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的。</p>
-<p>LANG/LANGUGE：是和语言相关的环境变量，使用多种语言的用户可以修改此环境变量。</p>
-<p>使用修改.bashrc文件进行环境变量的编辑，只对当前用户有用。</p>
-<p>使用修改/etc/profile文件进行环境变量的编辑，是对所有用户有用。</p>
-<p>关于环境变量命令介绍：</p>
-<p>echo显示某个环境变量值echo$PATH</p>
-<p><strong>export设置一个新的环境变量exportHELLO=“hello”(可以无引号)</strong></p>
-<p>env显示所有环境变量</p>
-<p>set显示本地定义的shell变量</p>
-<p>unset清除环境变量unsetHELLO</p>
-<p>readonly设置只读环境变量readonlyHELLO</p>
-<ul>
-<li>对所有用户生效的永久性变量（系统级）:</li>
-</ul>
-<p>这类变量对系统内的所有用户都生效，所有用户都可以使用这类变量。作用范围是整个系统。</p>
-<p>设置方式： 用vim在/etc/profile文件中添加我们想要的环境变量,用export指令添加环境变量</p>
-<p>当然，这个文件只有在root（超级用户）下才能修改。我们可以在etc目录下使用ls -l查看这个文件的用户及权限</p>
-<p>【注意】：添加完成后新的环境变量不会立即生效，除非你调用source /etc/profile 该文件才会生效。否则只能在下次重进此用户时才能生效。</p>
-<ul>
-<li>对单一用户生效的永久性变量（用户级）:</li>
-</ul>
-<p>只针对当前用户，和上面的一样，只不过不需要在etc下面进行添加，直接在.bash_profile文件最下面用export添加就好了。</p>
-<p>这里 .bashrc和.bash_profile原则上来说设置此类环境变量时在这两个文件任意一个里面添加都是可以的。</p>
-<p>~/.bash_profile是交互式login方式进入bash shell运行。</p>
-<p>~/ .bashrc是交互式non-login方式进入bash shell运行。</p>
-<p>二者设置大致相同。</p>
-<p>就是.bash_profile文件只会在用户登录的时候读取一次</p>
-<p>而.bashrc在每次打开终端进行一次新的会话时都会读取。</p>
-<ul>
-<li>临时有效的环境变量（只对当前shell有效）:</li>
-</ul>
-<p>此类环境变量只对当前的shell有效。当我们退出登录或者关闭终端再重新打开时，这个环境变量就会消失。是临时的。 直接使用export指令添加。</p>
-<p>3.linux 根⽬录下⾯的⽬录结构是什么样的？⾄少说出 3 个⽬录的⽤途。</p>
-<ul>
-<li>可通过终端查看/目录下的文件：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-<p><code>/bin </code>用户二进制文件<br>
-包含二进制可执行文件，系统所有用户可执行文件都在这个文件夹里，例如：ls，cp，ping等。</p>
-<p><code>/sbin</code> 系统二进制文件<br>
-包含二进制可执行文件，但只能由系统管理员运行，对系统进行维护。</p>
-<p><code>/etc </code>配置文件<br>
-包含所有程序配置文件，也包含了用于启动/停止单个程序的启动和关闭shell脚本。</p>
-<p><code>/dev </code>设备文件<br>
-包含终端所有设备，USB或连接到系统的任何设备。例如：<code>/dev/tty1</code>、<code>dev/usbmon0</code></p>
-<p><code>/proc</code>进程信息<br>
-包含系统进程的相关信息。<br>
-这是一个虚拟的文件系统，包含有关正在运行的进程的信息。例如：<code>/proc/&#123;pid&#125;</code>目录中包含的与特定pid相关的信息。<br>
-这是一个虚拟的文件系统，系统资源以文本信息形式存在。例如：<code>/proc/uptime</code></p>
-<p><code>/var </code>变量文件<br>
-可以找到内容可能增长的文件。<br>
-这包括 - 系统日志文件<code>/var/log</code>;包和数据库文件<code>/var/lib</code>;电子邮件<code>/var/mail</code>;打印队列<code>/var/spool</code>;锁文件<code>/var/lock</code>;多次重新启动需要的临时文件<code>/var/tmp</code>;</p>
-<p><code>/tmp </code>临时文件<br>
-包含系统和用户创建的临时文件。<br>
-当系统重新启动时，这个目录下的文件都将被删除。</p>
-<p><code>/usr </code>用户程序<br>
-包含二进制文件、库文件、文档和二级程序的源代码。<br>
-<code>/usr/bin</code>中包含用户程序的二进制文件。如果你在<code>/bin</code>中找不到用户二进制文件，到<code>/usr/bin</code>目录看看。例如：at、awk、cc、less、scp。<br>
-<code>/usr/sbin</code>中包含系统管理员的二进制文件。如果你在<code>/sbin</code>中找不到系统二进制文件，到<code>/usr/sbin</code>目录看看。例如：atd、cron、sshd、useradd、userdel。<br>
-<code>/usr/lib</code>中包含了<code>/usr/bin</code>和<code>/usr/sbin</code>用到的库。<br>
-<code>/usr/local</code>中包含了从源安装的用户程序。例如，当你从源安装Apache，它会在<code>/usr/local/apache2</code>中。</p>
-<p><code>/home</code> HOME目录<br>
-所有用户用来存档他们的个人档案。</p>
-<p><code>/boot </code>引导加载程序文件<br>
-包含引导加载程序相关的文件。<br>
-内核的initrd、vmlinux、grub文件位于<code>/boot</code>下。</p>
-<p><code>/lib </code>系统库<br>
-包含支持位于<code>/bin</code>和<code>/sbin</code>下的二进制文件的库文件.<br>
-库文件名为 <a href="http://xn--ldlib-ym6j.so">ld或lib.so</a>.*</p>
-<p><code>/opt </code>可选的附加应用程序<br>
-opt代表opitional；<br>
-包含从个别厂商的附加应用程序。<br>
-附加应用程序应该安装在<code>/opt/</code>或者<code>/opt/</code>的子目录下。</p>
-<p><code>/mnt </code>挂载目录<br>
-临时安装目录，系统管理员可以挂载文件系统。</p>
-<p><code>/media</code> 可移动媒体设备<br>
-用于挂载可移动设备的临时目录。<br>
-举例来说，挂载CD-ROM的<code>/media/cdrom</code>，挂载软盘驱动器的<code>/media/floppy</code>;</p>
-<p><code>/srv</code>服务数据<br>
-srv代表服务。<br>
-包含服务器特定服务相关的数据。<br>
-例如，<code>/srv/cvs</code>包含cvs相关的数据。</p>
-<p>4.假设我要给 <a href="http://a.sh">a.sh</a> 加上可执⾏权限，该输⼊什么命令？</p>
-<p><code>chmod 777 文件名</code> 将文件设置成对拥有者、组成员、其他人可读、可写、可执行。<br>
-<code>chmod a+x 文件名</code>将文件在原来的配置上增加可执行权限。</p>
-<p>5.假设我要将 <a href="http://a.sh">a.sh</a> ⽂件的所有者改成 xiang:xiang，该输⼊什么命令？</p>
-<p><code>chown xiang:xiang 文件名</code>将文件的所有者改成xiang:xiang</p>
-<h3 id="slam文献阅读">SLAM文献阅读</h3>
-<p>1.SLAM 会在哪些场合中⽤到？⾄少列举三个⽅向。</p>
-<p>机器人定位导航、手持设备定位、增强现实、自动泊车、语义地图重建等</p>
-<p>2.SLAM中定位与建图是什么关系？为什么在定位的同时需要建图？</p>
-<p>定位需要精确的地图，详细的地图需要精确地定位，两者相辅相成，相互依存。重定位和局部建图是slam框架中很重要的两个线程。</p>
-<p>定位：机器人必须<strong>知道自己在环境中位置</strong>；</p>
-<p>建图：机器人必须<strong>记录环境中特征的位置</strong>（如果知道自己的位置）；</p>
-<p>机器人在未知环境中从一个未知位置开始移动,在移动过程中根据位置估计和地图进行自身定位,同时在自身定位的基础上建造增量式地图，实现机器人的自主定位和导航。</p>
-<p>3.SLAM发展历史如何？我们可以将它划分成哪⼏个阶段？</p>
-<p>1985-1990：, Chatila 和Laumond (1985) and Smith et al. (1990)提出以建图和定位同时进行；</p>
-<p><strong>单传感器为外部传感器：</strong></p>
-<p>早期：</p>
-<ul>
-<li>声呐(Tardós et al. 2002; Ribas et al. 2008)；</li>
-</ul>
-<p>后期：</p>
-<ul>
-<li>
-<p>激光雷达(Nüchter etal. 2007; Thrun et al. 2006)；</p>
-</li>
-<li>
-<p>相机(Se et al. 2005; Lemaire et al. 2007; Davison 2003;Bogdan et al. 2009)；</p>
-</li>
-<li>
-<p>GPS(Thrun et al. 2005a)；</p>
-</li>
-</ul>
-<p><strong>多传感器融合</strong></p>
-<p>三个发展阶段：</p>
-<ul>
-<li>
-<p>初始阶段：二十世纪八十年代</p>
-</li>
-<li>
-<p>发展阶段：二十世纪九十年代</p>
-</li>
-<li>
-<p>快速发展阶段</p>
-</li>
-</ul>
-<p>4.列举三篇在SLAM领域的经典⽂献。</p>
-<ul>
-<li>
-<p>Smith, R.C. and P. Cheeseman, On the Representation and Estimation of Spatial Uncertainty. International Journal of Robotics Research, 1986. 5</p>
-</li>
-<li>
-<p>Se, S., D. Lowe and J. Little, Mobile robot localization and mapping with uncertainty using scale­invariant visual landmarks. The international Journal of robotics Research, 2002. 21</p>
-</li>
-<li>
-<p>Mullane, J., et al., A Random­Finite­Set Approach to Bayesian SLAM. IEEE Transactions on Robotics, 2011</p>
-</li>
-</ul>
-<h3 id="cmake练习">CMake练习</h3>
-<blockquote>
-<p>1.程序代码由头文件和源文件组成；</p>
-<p>2.带有main函数的源文件编译成可执行程序，其他的编译成库文件；</p>
-<p>3.如果可执行程序想调用库文件中的函数，它需要参考该库提供的头文件，以明白调用的格式。同时要把可执行程序链接到库文件上；</p>
-</blockquote>
-<p>在自己的工程目录里面建立子目录<code>build</code>文件夹和<code>src</code>文件夹和<code>libhello</code>文件夹，hello.cpp,hello.h放入<code>libhello</code>中,useHello.cpp放入<code>src</code>中。同时在工程目录下创建一个顶层的CMakeLists.txt文件，内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project(sayHello)</span><br><span class="line"></span><br><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"></span><br><span class="line">#ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</span><br><span class="line">#这个指令用于向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制存放的位置</span><br><span class="line">add_subdirectory(src) </span><br><span class="line">#在 build 目录中将出现一个 src 目录，生成的目标代码 hello 将存放在 src 目录中</span><br><span class="line"></span><br><span class="line">add_subdirectory(libhello)</span><br><span class="line"></span><br><span class="line">set(CMAKE_BUILD_TYPE &quot;Release&quot;)</span><br></pre></td></tr></table></figure>
-<p>在<code>src</code>文件夹下新建CMakeLists.txt文件，输入如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"></span><br><span class="line">#头文件目录</span><br><span class="line">include_directories($&#123;PROJECT_SOURCE_DIR&#125;/libhello)</span><br><span class="line"></span><br><span class="line">set(APP_SRC useHello.cpp)</span><br><span class="line"></span><br><span class="line">#指定最终的目标二进制的位置</span><br><span class="line">#SET(EXECUTABLE_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/bin)</span><br><span class="line">#SET(LIBRARY_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/lib)</span><br><span class="line">set(EXECUTABLE_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/bin)</span><br><span class="line"></span><br><span class="line">add_executable(sayHello $&#123;APP_SRC&#125;)</span><br><span class="line"></span><br><span class="line">#为 target 添加需要链接的库</span><br><span class="line">target_link_libraries(sayHello libhello)</span><br></pre></td></tr></table></figure>
-<p>最后在<code>libhello</code>文件夹下新建CMakeLists.txt文件，输入如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 2.8)</span><br><span class="line"></span><br><span class="line">set(LIB_SRC hello.cpp)</span><br><span class="line"></span><br><span class="line">#向 C/C++编译器添加-D 定义</span><br><span class="line">add_definitions(&quot;-DLIBHELLO_BUILD&quot;)</span><br><span class="line"></span><br><span class="line">#添加动态库</span><br><span class="line">add_library(libhello SHARED $&#123;LIB_SRC&#125;)</span><br><span class="line">#设置动态库输出位置</span><br><span class="line">set(LIBRARY_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/lib)</span><br><span class="line"></span><br><span class="line">#SET_TARGET_PROPERTIES(target1 target2 ...</span><br><span class="line">#PROPERTIES prop1 value1 </span><br><span class="line">#prop2 value2 ...)</span><br><span class="line">#该指令可以用来设置输出的名称，对于动态库，还可以用来指定动态库版本和 API 版本</span><br><span class="line">set_target_properties(libhello PROPERTIES OUTPUT_NAME &quot;sayhello&quot;)</span><br></pre></td></tr></table></figure>
-<p>接着在<code>build</code>文件夹下<code>cmake ..</code>, <code>make</code>即可，在biuld文件中的子问夹下的bin文件生成可执行文件sayHello;在lib中生成库文件libhello.so共享库文件。</p>
-<p>对于安装路径，可以使用<code>CMAKE_INSTALL_PREFIX</code>命令。</p>
-<h3 id="理解orbslam2框架">理解ORBSLAM2框架</h3>
-<p>1.<code>git clone https://github.com/raulmur/ORB_SLAM2</code></p>
-<p>2.(a) 6个可执行文件一个库文件 <code>set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/lib)</code></p>
-<p>(b)<code>include</code>文件夹包含：对应<code>src</code>中程序的代码函数头文件；<code>src</code>文件夹包含：相应程序的代码函数的c++文件；Examples文件夹包含RGB-D文件夹，Stereo文件夹， Monocular文件夹，具体的内容在总目录下的CMakeLists.txt文件中有写：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Build examples</span><br><span class="line"></span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/Examples/RGB-D)</span><br><span class="line"></span><br><span class="line">add_executable(rgbd_tum</span><br><span class="line">Examples/RGB-D/rgbd_tum.cc)</span><br><span class="line">target_link_libraries(rgbd_tum $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/Examples/Stereo)</span><br><span class="line"></span><br><span class="line">add_executable(stereo_kitti</span><br><span class="line">Examples/Stereo/stereo_kitti.cc)</span><br><span class="line">target_link_libraries(stereo_kitti $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(stereo_euroc</span><br><span class="line">Examples/Stereo/stereo_euroc.cc)</span><br><span class="line">target_link_libraries(stereo_euroc $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/Examples/Monocular)</span><br><span class="line"></span><br><span class="line">add_executable(mono_tum</span><br><span class="line">Examples/Monocular/mono_tum.cc)</span><br><span class="line">target_link_libraries(mono_tum $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(mono_kitti</span><br><span class="line">Examples/Monocular/mono_kitti.cc)</span><br><span class="line">target_link_libraries(mono_kitti $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(mono_euroc</span><br><span class="line">Examples/Monocular/mono_euroc.cc)</span><br><span class="line">target_link_libraries(mono_euroc $&#123;PROJECT_NAME&#125;)</span><br></pre></td></tr></table></figure>
-<p>© OPENCV_LIBS、EIGEN3_LIBS、Pangolin_LIBRARIES、/ORB-SLAM2/Thirdparty/DBoW2/lib/libDBoW2.so、/ORB-SLAM2/Thirdparty/g2o/lib/libg2o.so</p>
-<h3 id="运行orb-slam2">运行ORB-SLAM2</h3>
-<p>1.编译安装依赖项，可以按照<a href="https://github.com/raulmur/ORB_SLAM2">ORB-SLAM2源码</a>的指导进行配置。其他依赖项按照高翔书中所说的安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libopencv-dev libeigen3-dev libqt4-dev qt4-qmake libqglviewer-dev libsuitesparse-dev libcxsparse3.1.2 libcholmod[tab安装]</span><br></pre></td></tr></table></figure>
-<p>其中需要注意Pangolin需要下载手动编译安装，步骤比较简单，不再赘述</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libglew-dev</span><br><span class="line">---</span><br><span class="line">sudo apt-get install libboost-dev libboost-thread-dev libboost-filesystem-dev</span><br><span class="line">---</span><br><span class="line">git clone https://github.com/stevenlovegrove/Pangolin Pangolin</span><br><span class="line">--</span><br><span class="line">cd Pangolin</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make </span><br><span class="line">sudo make install</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>另外一个注意的点就是opencv库，我是手动下载编译安装的，网上的教程很多，主要是编译时注意cmake的设置，但是我在安装的时候无法被python链接，<a href="http://xn--cv2-kd9dw54dxji8oh3wbhxxgvu.so">也就是没有生成cv2.so</a>，导致没办法在Python2和python3中<code>import cv2</code>，估计可能是我之前先装了anaconda的原因，导致了opencv编译忽略了Python路径问题。。。尝试了几次，未果，等以后用到了python再解决这个问题（可以直接用<code>sudo pip3 install opencv-python</code>，如果不想麻烦的话，不过以后可能会出现一些问题）</p>
-<p>2.如何将 myslam.cpp或 myvideo.cpp 加⼊到 ORB-SLAM2 ⼯程中？请给出你的 CMakeLists.txt 修改⽅案。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#add myvideo.cpp and myslam.cpp</span><br><span class="line">set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(myvideo myvideo.cpp)</span><br><span class="line">target_link_libraries(myvideo $&#123;PROJECT_NAME&#125;)</span><br><span class="line"></span><br><span class="line">add_executable(myslam myslam.cpp)</span><br><span class="line">target_link_libraries(myslam $&#123;PROJECT_NAME&#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>将myvideo.cpp、myslam.cpp、myvideo.yaml、myslam.yaml以及myvideo.mp4都放到ORB-SLAM2目录下</strong>，再次编译ORB-SLAM2后，就会生成可执行文件，然后终端输入./myvideo和./myslam就可以直接运行了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Richardyu114/PicBed_blog/visualSLAMbyGaoxiang-1/myvideo.png" alt="myvideo"></p>
-<p>这里有个问题，一开始我是根据CMakeLits.txt中上面的语句来写的，也就是我把myvideo.cpp、myslam.cpp放在了、Examples/Monocular文件夹中，然后进行编译，结果虽然生成了可执行文件，但是程序无法运行，终端要么提示无法读取对应的.yaml的设置，要么出现segmentation fault错误，最后放到ORB-SLAM2总目录下就没问题了。。。目前不知道什么原因，等后面再看看。</p>
-<hr>
-<hr>
-<p>因为ORB-SLAM2开源的版本没有稠密建图功能，因此如果想尝试稠密建图功能，可以参考高翔博士的ORB-SLAM2_modofied，利用PCL工具实时拼接RGB-D图像，效果还可以，不过没有原作者视频中最后的那个效果好，安装步骤在<a href="https://github.com/Richardyu114/ORBSLAM2_with_pointcloud_map-in-Ubuntu-16.04">这里</a>。</p>
-]]></content>
-      <categories>
-        <category>科研记录</category>
-      </categories>
-      <tags>
-        <tag>visual SLAM</tag>
-        <tag>Linux</tag>
-        <tag>C++11</tag>
-        <tag>Computer vision</tag>
-        <tag>OpenCV</tag>
       </tags>
   </entry>
   <entry>
